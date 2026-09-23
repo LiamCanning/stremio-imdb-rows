@@ -1,0 +1,460 @@
+{
+ "id": "org.liamcanning.imdbrows",
+ "version": "1.0.20260923",
+ "name": "IMDb Rows",
+ "description": "Curated rows sorted by IMDb rating, rebuilt weekly.",
+ "resources": [
+  "catalog"
+ ],
+ "types": [
+  "movie",
+  "series"
+ ],
+ "idPrefixes": [
+  "tt"
+ ],
+ "catalogs": [
+  {
+   "type": "movie",
+   "id": "best_films",
+   "name": "Best Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "TV Movie",
+      "Thriller",
+      "War",
+      "Western"
+     ]
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "best_series",
+   "name": "Best Series",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "Action and Adventure",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Kids",
+      "Mystery",
+      "Romance",
+      "Sci-Fi and Fantasy",
+      "Soap",
+      "War and Politics",
+      "Western"
+     ]
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "best_new_films",
+   "name": "Best New Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "TV Movie",
+      "Thriller",
+      "War"
+     ]
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "best_new_series",
+   "name": "Best New Series",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "Action and Adventure",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Mystery",
+      "Sci-Fi and Fantasy",
+      "War and Politics",
+      "Western"
+     ]
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "modern_classics",
+   "name": "Modern Classics (1980-2009)",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "classics",
+   "name": "Classics (Pre-1980)",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "TV Movie",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "mind_bending",
+   "name": "Mind-Bending Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "true_stories",
+   "name": "True Stories",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "TV Movie",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "miniseries",
+   "name": "Best Miniseries",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "Kids",
+      "Mystery",
+      "Sci-Fi and Fantasy",
+      "War and Politics",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "hbo",
+   "name": "Best of HBO",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Kids",
+      "Mystery",
+      "Sci-Fi and Fantasy",
+      "War and Politics",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "british_series",
+   "name": "Best British Series",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "History",
+      "Mystery",
+      "Sci-Fi and Fantasy",
+      "War and Politics",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "british_films",
+   "name": "Best British Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "TV Movie",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "spanish_series",
+   "name": "Best Spanish Series",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "Mystery",
+      "Sci-Fi and Fantasy",
+      "Soap",
+      "War and Politics"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "spanish_films",
+   "name": "Best Spanish Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  }
+ ],
+ "behaviorHints": {
+  "configurable": false
+ }
+}
