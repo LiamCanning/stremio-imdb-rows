@@ -9,6 +9,8 @@ MIN_RATING = 7.0
 
 # TMDB genre ids used in exclusions
 ANIMATION, DOCUMENTARY, KIDS, MUSIC, NEWS, REALITY, TALK, TV_MOVIE = 16, 99, 10762, 10402, 10763, 10764, 10767, 10770
+# sports documentary, sport, football, basketball, boxing, F1, tennis, Olympics, cycling, athlete
+SPORT_KEYWORDS = "159290|333328|13042|6496|209476|233981|1488|2070|180491|274126"
 NOT_REAL_TV = f"{ANIMATION},{REALITY},{TALK},{NEWS},{DOCUMENTARY}"
 
 ROWS = [
@@ -42,4 +44,16 @@ ROWS = [
          params={"with_origin_country": "ES", "without_genres": f"{ANIMATION},{KIDS},{DOCUMENTARY},{REALITY},{TALK}"}),
     dict(id="spanish_films", name="Best Spanish Films", type="movie", pages=20, min_votes=3000,
          params={"with_origin_country": "ES"}),
+    dict(id="german_films", name="Best German Films", type="movie", pages=30, min_votes=10000,
+         params={"with_origin_country": "DE"}),
+    dict(id="biographies", name="Best Biopics", type="movie", pages=40, min_votes=20000,
+         params={"with_keywords": "5565", "without_genres": str(DOCUMENTARY)}),
+    dict(id="documentaries", name="Best Documentaries", type="movie", pages=40, min_votes=5000,
+         params={"with_genres": str(DOCUMENTARY)}),
+    dict(id="documentary_series", name="Best Documentary Series", type="series", pages=30, min_votes=3000,
+         params={"with_genres": str(DOCUMENTARY), "without_genres": f"{REALITY},{TALK},{NEWS}"}),
+    dict(id="sports_docs", name="Best Sports Documentaries", type="movie", pages=20, min_votes=1000,
+         params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}),
+    dict(id="sports_doc_series", name="Best Sports Documentary Series", type="series", pages=15, min_votes=500,
+         params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}),
 ]

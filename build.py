@@ -94,7 +94,8 @@ def main():
             items.append(dict(
                 id=tt, type=row["type"], name=c.get("title") or c.get("name"),
                 poster=RPDB.format(tt), posterShape="poster", releaseInfo=date[:4],
-                imdbRating=f"{rating:.1f}", genres=[gnames[g] for g in c.get("genre_ids", []) if g in gnames],
+                imdbRating=f"{rating:.1f}", description=c.get("overview") or "",
+                background=f"https://image.tmdb.org/t/p/w1280{c['backdrop_path']}" if c.get("backdrop_path") else None, genres=[gnames[g] for g in c.get("genre_ids", []) if g in gnames],
                 _votes=votes,
             ))
         items.sort(key=lambda m: (-float(m["imdbRating"]), -m["_votes"]))
@@ -129,7 +130,7 @@ def write(rows, built):
                 parts = ([f"genre={g}"] if g else []) + ([f"skip={skip}"] if skip else [])
                 path = base + ".json" if not parts else os.path.join(base, "&".join(parts) + ".json")
                 os.makedirs(os.path.dirname(path), exist_ok=True)
-                metas = [{k: v for k, v in m.items() if k != "_votes"} for m in lst[skip:skip + PAGE]]
+                metas = [{k: v for k, v in m.items() if k != "_votes" and v is not None} for m in lst[skip:skip + PAGE]]
                 json.dump({"metas": metas}, open(path, "w"), separators=(",", ":"))
     manifest = dict(
         id="org.liamcanning.imdbrows", version="1.0." + datetime.date.today().strftime("%Y%m%d"),
