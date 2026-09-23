@@ -450,6 +450,179 @@
      "name": "skip"
     }
    ]
+  },
+  {
+   "type": "movie",
+   "id": "german_films",
+   "name": "Best German Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "biographies",
+   "name": "Best Biopics",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "TV Movie",
+      "Thriller",
+      "War"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "documentaries",
+   "name": "Best Documentaries",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Science Fiction",
+      "TV Movie",
+      "War"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "documentary_series",
+   "name": "Best Documentary Series",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Kids",
+      "Mystery",
+      "Sci-Fi and Fantasy",
+      "War and Politics"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "sports_docs",
+   "name": "Best Sports Documentaries",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Adventure",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "History",
+      "TV Movie"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "sports_doc_series",
+   "name": "Best Sports Documentary Series",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Reality"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
   }
  ],
  "behaviorHints": {
