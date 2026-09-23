@@ -7,6 +7,9 @@ home=True rows appear on the Stremio Home board; the rest are Discover only.
 
 MIN_RATING = 7.0
 
+# IMDb ids to drop from every row (mis-tagged on TMDB)
+BLOCK = {"tt5963218"}  # CM101MMXI Fundamentals: stand-up special tagged documentary
+
 # TMDB genre ids used in exclusions
 ANIMATION, DOCUMENTARY, KIDS, MUSIC, NEWS, REALITY, TALK, TV_MOVIE = 16, 99, 10762, 10402, 10763, 10764, 10767, 10770
 # sports documentary, sport, football, basketball, boxing, F1, tennis, Olympics, cycling, athlete

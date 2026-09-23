@@ -7,7 +7,7 @@ Stdlib only.
 import csv, datetime, gzip, io, json, os, shutil, sys, time, urllib.parse, urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
-from rows import MIN_RATING, ROWS
+from rows import BLOCK, MIN_RATING, ROWS
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "docs")
@@ -84,7 +84,7 @@ def main():
         items, seen = [], set()
         for c in cands:
             tt = cache.get(f"{kind}:{c['id']}")
-            if not tt or tt in seen or tt not in ratings:
+            if not tt or tt in seen or tt in BLOCK or tt not in ratings:
                 continue
             rating, votes = ratings[tt]
             if rating < MIN_RATING or votes < row["min_votes"]:
