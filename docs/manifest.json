@@ -813,6 +813,71 @@
      "name": "skip"
     }
    ]
+  },
+  {
+   "type": "movie",
+   "id": "animated_films",
+   "name": "Best Animated Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "TV Movie",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "disney_pixar",
+   "name": "Disney and Pixar",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
   }
  ],
  "behaviorHints": {
