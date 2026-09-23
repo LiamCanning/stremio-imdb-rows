@@ -441,8 +441,7 @@
       "Romance",
       "Science Fiction",
       "Thriller",
-      "War",
-      "Western"
+      "War"
      ],
      "isRequired": true
     },
@@ -475,8 +474,7 @@
       "Romance",
       "Science Fiction",
       "Thriller",
-      "War",
-      "Western"
+      "War"
      ],
      "isRequired": true
     },
@@ -743,8 +741,7 @@
       "Romance",
       "Science Fiction",
       "Thriller",
-      "War",
-      "Western"
+      "War"
      ],
      "isRequired": true
     },
@@ -766,7 +763,6 @@
       "Adventure",
       "Comedy",
       "Crime",
-      "Documentary",
       "Drama",
       "Fantasy",
       "History",
