@@ -59,10 +59,10 @@ ROWS = [
          params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}),
     dict(id="sports_doc_series", name="Best Sports Documentary Series", type="series", pages=15, min_votes=500,
          params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}),
-    dict(id="football_films", name="Best Football Films", type="movie", pages=15, min_votes=1000,
+    dict(id="football_films", name="Best Football Films", type="movie", pages=15, min_votes=3000,
          params={"with_keywords": "13042"}),
     dict(id="football_series", name="Best Football Series", type="series", pages=10, min_votes=300,
-         params={"with_keywords": "13042"}),
+         params={"with_keywords": "13042"}, block={"tt0141842"}),  # The Sopranos (mis-tagged)
     dict(id="korean_films", name="Best Korean Films", type="movie", pages=30, min_votes=10000,
          params={"with_origin_country": "KR", "with_original_language": "ko"}),
     dict(id="french_films", name="Best French Films", type="movie", pages=40, min_votes=15000,

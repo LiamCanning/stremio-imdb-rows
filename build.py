@@ -84,7 +84,7 @@ def main():
         items, seen = [], set()
         for c in cands:
             tt = cache.get(f"{kind}:{c['id']}")
-            if not tt or tt in seen or tt in BLOCK or tt not in ratings:
+            if not tt or tt in seen or tt in BLOCK or tt in row.get("block", ()) or tt not in ratings:
                 continue
             rating, votes = ratings[tt]
             if rating < MIN_RATING or votes < row["min_votes"]:
