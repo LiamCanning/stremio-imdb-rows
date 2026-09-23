@@ -1,0 +1,26 @@
+name: Weekly build
+on:
+  schedule:
+    - cron: "0 5 * * 1"   # Mondays 05:00 UTC
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python build.py
+        env:
+          TMDB_TOKEN: ${{ secrets.TMDB_TOKEN }}
+      - name: Commit
+        run: |
+          git config user.name "imdb-rows-bot"
+          git config user.email "imdb-rows-bot@users.noreply.github.com"
+          git add -A docs cache
+          git commit -m "Weekly rebuild $(date -u +%F)" || echo "No changes"
+          git push
