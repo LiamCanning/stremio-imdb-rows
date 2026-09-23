@@ -71,9 +71,8 @@ ROWS = [
          params={"with_origin_country": "IT", "with_original_language": "it"}),
     dict(id="war_films", name="Best War Films", type="movie", pages=40, min_votes=25000,
          params={"with_genres": "10752"}),
-    # English-language only keeps anime out; Klaus, Spider-Verse etc. are English originals
     dict(id="animated_films", name="Best Animated Films", type="movie", pages=40, min_votes=25000,
-         params={"with_genres": str(ANIMATION), "with_original_language": "en"}),
+         params={"with_genres": str(ANIMATION)}),
     # Walt Disney Pictures, Pixar, Walt Disney Animation Studios
     dict(id="disney_pixar", name="Disney and Pixar", type="movie", pages=30, min_votes=25000,
          params={"with_companies": "2|3|6125"}),
