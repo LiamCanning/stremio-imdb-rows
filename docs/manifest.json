@@ -1,10 +1,19 @@
 {
  "id": "org.liamcanning.imdbrows",
- "version": "1.0.20260923",
+ "version": "1.0.20260924",
  "name": "IMDb Rows",
  "description": "Curated rows sorted by IMDb rating, rebuilt weekly.",
  "resources": [
-  "catalog"
+  "catalog",
+  {
+   "name": "stream",
+   "types": [
+    "series"
+   ],
+   "idPrefixes": [
+    "tt"
+   ]
+  }
  ],
  "types": [
   "movie",
