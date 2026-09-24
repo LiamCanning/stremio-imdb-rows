@@ -110,7 +110,9 @@ def main():
 def write(rows, built):
     if os.path.exists(OUT):
         shutil.rmtree(OUT)
-    catalogs = []
+    # watchlist.py writes these rows' files at deploy time; first so they top Home
+    catalogs = [dict(type=t, id="watchlist", name="Watchlist (IMDb)", extra=[dict(name="skip")])
+                for t in ("movie", "series")]
     for row in rows:
         items = built[row["id"]]
         genres = sorted({g for m in items for g in m["genres"]})
