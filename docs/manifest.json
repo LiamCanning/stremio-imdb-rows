@@ -25,6 +25,26 @@
  "catalogs": [
   {
    "type": "movie",
+   "id": "watchlist",
+   "name": "Watchlist (IMDb)",
+   "extra": [
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "watchlist",
+   "name": "Watchlist (IMDb)",
+   "extra": [
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
    "id": "best_films",
    "name": "Best Films",
    "extra": [
