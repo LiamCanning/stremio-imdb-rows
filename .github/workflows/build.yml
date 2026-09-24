@@ -3,12 +3,21 @@ on:
   schedule:
     - cron: "0 5 * * 1"   # Mondays 05:00 UTC
   workflow_dispatch:
+  push:
+    branches: [main]
 permissions:
   contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    environment:
+      name: github-pages
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -24,3 +33,14 @@ jobs:
           git add -A docs cache
           git commit -m "Weekly rebuild $(date -u +%F)" || echo "No changes"
           git push
+      # Episode ratings are ~250k files: deployed to Pages, never committed
+      - name: Assemble site
+        run: |
+          cp -r docs _site
+          python episodes.py _site
+        env:
+          TMDB_TOKEN: unused
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - uses: actions/deploy-pages@v4

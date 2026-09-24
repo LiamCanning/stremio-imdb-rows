@@ -135,7 +135,8 @@ def write(rows, built):
     manifest = dict(
         id="org.liamcanning.imdbrows", version="1.0." + datetime.date.today().strftime("%Y%m%d"),
         name="IMDb Rows", description="Curated rows sorted by IMDb rating, rebuilt weekly.",
-        resources=["catalog"], types=["movie", "series"], idPrefixes=["tt"], catalogs=catalogs,
+        resources=["catalog", dict(name="stream", types=["series"], idPrefixes=["tt"])],  # stream = episodes.py
+        types=["movie", "series"], idPrefixes=["tt"], catalogs=catalogs,
         behaviorHints=dict(configurable=False),
     )
     json.dump(manifest, open(os.path.join(OUT, "manifest.json"), "w"), indent=1)
