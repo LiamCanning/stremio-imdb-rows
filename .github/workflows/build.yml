@@ -1,8 +1,7 @@
 name: Weekly build
 on:
   schedule:
-    - cron: "0 5 * * 1"   # Mondays 05:00 UTC: full rebuild
-    - cron: "30 */3 * * *" # every 3 hours: watchlist and episode ratings only
+    - cron: "0 5 * * 1"   # Mondays 05:00 UTC
   workflow_dispatch:
   push:
     branches: [main]
@@ -25,11 +24,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: python build.py
-        if: github.event.schedule != '30 */3 * * *'
         env:
           TMDB_TOKEN: ${{ secrets.TMDB_TOKEN }}
       - name: Commit
-        if: github.event.schedule != '30 */3 * * *'
         run: |
           git config user.name "imdb-rows-bot"
           git config user.email "imdb-rows-bot@users.noreply.github.com"
