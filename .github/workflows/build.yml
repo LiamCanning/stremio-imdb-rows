@@ -38,9 +38,11 @@ jobs:
         run: |
           cp -r docs _site
           python watchlist.py _site
+          python library.py _site
           python episodes.py _site
         env:
           TMDB_TOKEN: ${{ secrets.TMDB_TOKEN }}
+          STREMIO_AUTH_KEY: ${{ secrets.STREMIO_AUTH_KEY }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

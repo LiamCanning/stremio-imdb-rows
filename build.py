@@ -110,8 +110,9 @@ def main():
 def write(rows, built):
     if os.path.exists(OUT):
         shutil.rmtree(OUT)
-    # watchlist.py writes these rows' files at deploy time; first so they top Home
-    catalogs = [dict(type=t, id="watchlist", name="Watchlist (IMDb)", extra=[dict(name="skip")])
+    # watchlist.py and library.py write these rows' files at deploy time; first so they top Home
+    catalogs = [dict(type=t, id=cid, name=name, extra=[dict(name="skip")])
+                for cid, name in (("watchlist", "Watchlist (IMDb)"), ("library", "Library (IMDb)"))
                 for t in ("movie", "series")]
     for row in rows:
         items = built[row["id"]]
