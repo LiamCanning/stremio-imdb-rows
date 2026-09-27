@@ -1,6 +1,6 @@
 {
  "id": "org.liamcanning.imdbrows",
- "version": "1.0.20260925",
+ "version": "1.0.20260927",
  "name": "IMDb Rows",
  "description": "Curated rows sorted by IMDb rating, rebuilt weekly.",
  "resources": [
@@ -37,6 +37,26 @@
    "type": "series",
    "id": "watchlist",
    "name": "Watchlist (IMDb)",
+   "extra": [
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "library",
+   "name": "Library (IMDb)",
+   "extra": [
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "library",
+   "name": "Library (IMDb)",
    "extra": [
     {
      "name": "skip"
