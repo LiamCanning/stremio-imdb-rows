@@ -1,6 +1,6 @@
 {
  "id": "org.liamcanning.imdbrows",
- "version": "1.0.20260928",
+ "version": "1.0.20260930",
  "name": "IMDb Rows",
  "description": "Curated rows sorted by IMDb rating, rebuilt weekly.",
  "resources": [
@@ -714,11 +714,9 @@
       "Action and Adventure",
       "Animation",
       "Comedy",
-      "Crime",
       "Documentary",
       "Drama",
       "Family",
-      "Mystery",
       "News",
       "Reality",
       "Sci-Fi and Fantasy",
