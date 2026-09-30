@@ -1,5 +1,5 @@
 """Liam's Stremio Library, unwatched titles only, as two catalogs (films, series),
-highest IMDb rating first. Also strips watched titles from every other row.
+highest IMDb rating first. Also strips watched titles from the Watchlist rows.
 
 Reads the Library from the Stremio API with STREMIO_AUTH_KEY. "Watched" follows
 Stremio's own rule: played to the end at least once, or marked as watched.
@@ -33,7 +33,8 @@ def hide_watched(out, seen):
     for path in glob.glob(os.path.join(out, "catalog", "*", "**", "*.json"), recursive=True):
         rel = os.path.relpath(path, os.path.join(out, "catalog"))
         m = re.fullmatch(r"(.+?)(?:/(genre=[^&]+?))?(?:[/&]skip=(\d+))?\.json", rel)
-        groups.setdefault((m.group(1), m.group(2)), []).append((int(m.group(3) or 0), path))
+        if m.group(1).split("/")[-1] == "watchlist":  # curated rows keep watched titles, for rewatching
+            groups.setdefault((m.group(1), m.group(2)), []).append((int(m.group(3) or 0), path))
     dropped = 0
     for (base, genre), pages in groups.items():
         pages.sort()
@@ -50,7 +51,7 @@ def hide_watched(out, seen):
             path = root + ".json" if not parts else os.path.join(root, "&".join(parts) + ".json")
             os.makedirs(os.path.dirname(path), exist_ok=True)
             json.dump({"metas": keep[skip:skip + PAGE]}, open(path, "w"), separators=(",", ":"))
-    print(f"hid {dropped} watched entries across rows")
+    print(f"hid {dropped} watched entries from the watchlist")
 
 
 def main(out):
