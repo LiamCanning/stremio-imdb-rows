@@ -1,6 +1,6 @@
 {
  "id": "org.liamcanning.imdbrows",
- "version": "1.0.20261012",
+ "version": "1.0.20261013",
  "name": "IMDb Rows",
  "description": "Curated rows sorted by IMDb rating, rebuilt weekly.",
  "resources": [
@@ -549,7 +549,6 @@
       "Drama",
       "Family",
       "History",
-      "Horror",
       "Music",
       "Mystery",
       "Romance",
