@@ -13,12 +13,12 @@ Static Stremio catalog addon served from GitHub Pages. Install: `https://liamcan
 
 ## Build and deploy
 
-`.github/workflows/build.yml` runs daily 05:00 UTC, on push to main, and manually. It runs `build.py` and commits `docs/` + `cache/`, then copies `docs` to `_site`, adds watchlist, library and episodes output (~250k files, never committed) and deploys to Pages. Secrets: `TMDB_TOKEN`, `STREMIO_AUTH_KEY`.
+`.github/workflows/build.yml` runs daily 05:00 UTC, on push to main, and manually. It runs `build.py` and commits `docs/` + `cache/`, then copies `docs` to `_site`, adds watchlist, library and episodes output (~250k files, never committed) and deploys to Pages. It rebases before pushing so overlapping runs don't fail. Secrets: `TMDB_TOKEN`, `STREMIO_AUTH_KEY`.
 
 Local: `TMDB_TOKEN=... python3 build.py` (optional `ROWS=id1,id2`).
 
 ## Gotchas
 
-- Watchlist was briefly refreshed every 3 hours; now weekly with everything else.
+- Watchlist was briefly refreshed every 3 hours; now refreshed daily with everything else.
 - TMDB `find` by IMDb id sometimes attaches a series' id to a film too, so `watchlist.meta` checks series first.
-- If a run fails, last week's Pages deploy stays live.
+- If a run fails, the previous Pages deploy stays live.
