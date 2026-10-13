@@ -13,7 +13,7 @@ Static Stremio catalog addon served from GitHub Pages. Install: `https://liamcan
 
 ## Build and deploy
 
-`.github/workflows/build.yml` runs Mondays 05:00 UTC, on push to main, and manually. It runs `build.py` and commits `docs/` + `cache/`, then copies `docs` to `_site`, adds watchlist, library and episodes output (~250k files, never committed) and deploys to Pages. Secrets: `TMDB_TOKEN`, `STREMIO_AUTH_KEY`.
+`.github/workflows/build.yml` runs every 3 days at 05:00 UTC, on push to main, and manually. It runs `build.py` and commits `docs/` + `cache/`, then copies `docs` to `_site`, adds watchlist, library and episodes output (~250k files, never committed) and deploys to Pages. Secrets: `TMDB_TOKEN`, `STREMIO_AUTH_KEY`.
 
 Local: `TMDB_TOKEN=... python3 build.py` (optional `ROWS=id1,id2`).
 
