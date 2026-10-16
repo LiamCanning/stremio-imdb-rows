@@ -1,6 +1,6 @@
 {
  "id": "org.liamcanning.imdbrows",
- "version": "1.0.20261015",
+ "version": "1.0.20261016",
  "name": "IMDb Rows",
  "description": "Curated rows sorted by IMDb rating, rebuilt weekly.",
  "resources": [
@@ -148,7 +148,8 @@
       "Science Fiction",
       "TV Movie",
       "Thriller",
-      "War"
+      "War",
+      "Western"
      ]
     },
     {
@@ -549,6 +550,7 @@
       "Drama",
       "Family",
       "History",
+      "Horror",
       "Music",
       "Mystery",
       "Romance",
