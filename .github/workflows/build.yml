@@ -44,6 +44,7 @@ jobs:
         env:
           TMDB_TOKEN: ${{ secrets.TMDB_TOKEN }}
           STREMIO_AUTH_KEY: ${{ secrets.STREMIO_AUTH_KEY }}
+          JINA_API_KEY: ${{ secrets.JINA_API_KEY }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

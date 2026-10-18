@@ -3,22 +3,29 @@
 IMDb blocks plain requests with an AWS WAF challenge, so the page is read
 through Jina Reader. TMDB supplies type, name, year, overview and backdrop.
 Writes catalog files to <out>/catalog/<type>/watchlist*.json; the manifest
-entries live in build.py. Fails loudly if nothing parses, so a bad fetch
-never deploys an empty row. Stdlib only.
+entries live in build.py. If Jina can't deliver the full list (it sometimes
+blocks anonymous access to imdb.com for hours), the live Pages copy is reused,
+so a bad fetch never deploys an empty row or blocks the rest of the build.
+Set JINA_API_KEY to read through Jina as a signed-in user. Stdlib only.
 
 Usage: python watchlist.py <out_dir>
 """
 import json, os, re, sys, time
+import urllib.error
 
 from build import PAGE, RPDB, get, imdb_ratings, tmdb
 
 URL = "https://www.imdb.com/user/p.hzr7i7clzkng37xjalyrjrvfki/watchlist/?sort=date_added%2Cdesc"
+LIVE = "https://liamcanning.github.io/stremio-imdb-rows/catalog/{}/watchlist{}.json"
 
 
 def watchlist_ids():
     # Jina sometimes returns a half-loaded page; retry until the ids match the page's own count
+    headers = {"x-no-cache": "true", "X-With-Links-Summary": "all"}
+    if os.environ.get("JINA_API_KEY"):
+        headers["Authorization"] = "Bearer " + os.environ["JINA_API_KEY"]
     for attempt in range(6):
-        md = get("https://r.jina.ai/" + URL, {"x-no-cache": "true", "X-With-Links-Summary": "all"}).decode()
+        md = get("https://r.jina.ai/" + URL, headers).decode()
         found = {}
         for tt, pos in re.findall(r"imdb\.com/title/(tt\d+)/\?ref_=wl_t_(\d+)", md):
             found.setdefault(tt, int(pos))
@@ -27,7 +34,25 @@ def watchlist_ids():
         if total and found and len(found) >= int(total.group(1)):
             return sorted(found, key=found.get)
         time.sleep(15)
-    sys.exit("watchlist: never got the full list, not deploying")
+    raise RuntimeError("never got the full list")
+
+
+def keep_live(out):
+    # copy the currently deployed watchlist pages so the rows stay as they were
+    for kind in ("movie", "series"):
+        base = os.path.join(out, "catalog", kind, "watchlist")
+        os.makedirs(base, exist_ok=True)
+        skip = 0
+        while True:
+            try:
+                data = get(LIVE.format(kind, f"/skip={skip}" if skip else ""), tries=2)
+            except urllib.error.HTTPError as e:
+                if e.code == 404 and skip:
+                    break
+                raise
+            open(base + ".json" if not skip else os.path.join(base, f"skip={skip}.json"), "wb").write(data)
+            skip += PAGE
+        print(f"watchlist {kind}: kept live copy ({skip // PAGE} page(s))")
 
 
 def meta(tt):
@@ -45,8 +70,13 @@ def meta(tt):
 
 
 def main(out):
+    try:
+        ids = watchlist_ids()
+    except Exception as e:
+        print(f"::warning::watchlist fetch failed ({e}); keeping the live copy")
+        return keep_live(out)
     ratings = imdb_ratings()
-    items = [m for m in map(meta, watchlist_ids()) if m]
+    items = [m for m in map(meta, ids) if m]
     for m in items:
         if m["id"] in ratings:
             m["imdbRating"] = f"{ratings[m['id']][0]:.1f}"
