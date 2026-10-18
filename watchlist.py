@@ -20,19 +20,24 @@ LIVE = "https://liamcanning.github.io/stremio-imdb-rows/catalog/{}/watchlist{}.j
 
 
 def watchlist_ids():
-    # Jina sometimes returns a half-loaded page; retry until the ids match the page's own count
+    # Jina sometimes returns a half-loaded page; retry until the ids match the page's own count.
+    # Signed-in reads don't always show that count, so two identical full reads in a row also pass.
     headers = {"x-no-cache": "true", "X-With-Links-Summary": "all"}
     if os.environ.get("JINA_API_KEY"):
         headers["Authorization"] = "Bearer " + os.environ["JINA_API_KEY"]
+    prev = None
     for attempt in range(6):
         md = get("https://r.jina.ai/" + URL, headers).decode()
         found = {}
         for tt, pos in re.findall(r"imdb\.com/title/(tt\d+)/\?ref_=wl_t_(\d+)", md):
             found.setdefault(tt, int(pos))
-        total = re.search(r"\n(\d+)\nitems?\n", md)
+        total = re.search(r"\n(\d+)\s*\n?\s*(?:items?|titles?)\s*\n", md)
         print(f"watchlist attempt {attempt + 1}: {len(found)} ids parsed, page says {total.group(1) if total else '?'}")
         if total and found and len(found) >= int(total.group(1)):
             return sorted(found, key=found.get)
+        if not total and len(found) > 25 and len(found) == prev:
+            return sorted(found, key=found.get)
+        prev = len(found)
         time.sleep(15)
     raise RuntimeError("never got the full list")
 
