@@ -1,6 +1,6 @@
 {
  "id": "org.liamcanning.imdbrows",
- "version": "1.0.20261018",
+ "version": "1.0.20261019",
  "name": "IMDb Rows",
  "description": "Curated rows sorted by IMDb rating, rebuilt weekly.",
  "resources": [
