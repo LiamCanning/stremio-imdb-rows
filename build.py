@@ -17,6 +17,10 @@ PAGE = 100          # items per catalog file; Stremio asks for skip=100, 200, ..
 MAX_ITEMS = 300     # per row / per genre
 RPDB = "https://api.ratingposterdb.com/t0-free-rpdb-rounded-blocks/imdb/poster-default/{}.jpg?fallback=true"
 TMDB_KIND = {"movie": "movie", "series": "tv"}
+# Foreign watchlist row: country filter options (TMDB english names); anything else lands in "Other"
+FOREIGN = ["Spain", "France", "Germany", "Italy", "Denmark", "Sweden", "Norway", "Netherlands", "Belgium",
+           "Poland", "Ireland", "Canada", "Australia", "Mexico", "Argentina", "Brazil", "South Korea", "Japan",
+           "India", "Israel", "Turkey", "Other"]
 
 
 def get(url, headers=None, tries=4):
@@ -111,8 +115,11 @@ def write(rows, built):
     if os.path.exists(OUT):
         shutil.rmtree(OUT)
     # watchlist.py and library.py write these rows' files at deploy time; first so they top Home
-    catalogs = [dict(type=t, id=cid, name=name, extra=[dict(name="skip")])
-                for cid, name in (("watchlist", "Watchlist (IMDb)"), ("library", "Library (IMDb)"))
+    catalogs = [dict(type=t, id=cid, name=name, extra=extra)
+                for cid, name, extra in (
+                    ("watchlist", "Watchlist (IMDb)", [dict(name="skip")]),
+                    ("foreign", "Foreign Watchlist (IMDb)", [dict(name="genre", options=FOREIGN), dict(name="skip")]),
+                    ("library", "Library (IMDb)", [dict(name="skip")]))
                 for t in ("movie", "series")]
     for row in rows:
         items = built[row["id"]]

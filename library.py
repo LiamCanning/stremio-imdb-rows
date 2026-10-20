@@ -33,7 +33,7 @@ def hide_watched(out, seen):
     for path in glob.glob(os.path.join(out, "catalog", "*", "**", "*.json"), recursive=True):
         rel = os.path.relpath(path, os.path.join(out, "catalog"))
         m = re.fullmatch(r"(.+?)(?:/(genre=[^&]+?))?(?:[/&]skip=(\d+))?\.json", rel)
-        if m.group(1).split("/")[-1] == "watchlist":  # curated rows keep watched titles, for rewatching
+        if m.group(1).split("/")[-1] in ("watchlist", "foreign"):  # curated rows keep watched titles, for rewatching
             groups.setdefault((m.group(1), m.group(2)), []).append((int(m.group(3) or 0), path))
     dropped = 0
     for (base, genre), pages in groups.items():
