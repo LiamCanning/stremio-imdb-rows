@@ -45,6 +45,80 @@
   },
   {
    "type": "movie",
+   "id": "foreign",
+   "name": "Foreign Watchlist (IMDb)",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "Spain",
+      "France",
+      "Germany",
+      "Italy",
+      "Denmark",
+      "Sweden",
+      "Norway",
+      "Netherlands",
+      "Belgium",
+      "Poland",
+      "Ireland",
+      "Canada",
+      "Australia",
+      "Mexico",
+      "Argentina",
+      "Brazil",
+      "South Korea",
+      "Japan",
+      "India",
+      "Israel",
+      "Turkey",
+      "Other"
+     ]
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "foreign",
+   "name": "Foreign Watchlist (IMDb)",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "Spain",
+      "France",
+      "Germany",
+      "Italy",
+      "Denmark",
+      "Sweden",
+      "Norway",
+      "Netherlands",
+      "Belgium",
+      "Poland",
+      "Ireland",
+      "Canada",
+      "Australia",
+      "Mexico",
+      "Argentina",
+      "Brazil",
+      "South Korea",
+      "Japan",
+      "India",
+      "Israel",
+      "Turkey",
+      "Other"
+     ]
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
    "id": "library",
    "name": "Library (IMDb)",
    "extra": [
