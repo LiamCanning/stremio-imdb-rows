@@ -104,9 +104,6 @@ def main(out):
             items.append(m)
         items.sort(key=lambda m: (-ratings.get(m["id"], (0, 0))[0], -ratings.get(m["id"], (0, 0))[1]))
         # removed and Continue Watching items still count: watched is watched
-        series = [i for i in lib if i.get("type") == "series" and i["_id"].startswith("tt")]
-        print("series episodes seen/out:", ", ".join(f"{i.get('name')} {episodes_seen(i.get('state') or {})}" for i in series
-                                                     if (i.get("state") or {}).get("watched")))
         hide_watched(out, {i["_id"] for i in lib if watched(i)})
     else:
         print("library: no STREMIO_AUTH_KEY, writing empty rows")
