@@ -8,7 +8,7 @@ Stdlib only.
 
 Usage: python library.py <out_dir>
 """
-import glob, json, os, re, sys, urllib.request
+import base64, datetime, glob, json, os, re, sys, urllib.request, zlib
 
 from build import PAGE, RPDB, imdb_ratings
 from watchlist import meta
@@ -22,9 +22,42 @@ def library_items(key):
         return json.load(r)["result"]
 
 
+def episodes_seen(st):
+    # state.watched is "<anchor video id>:<anchor length>:<base64 zlib bitfield>", one bit per episode
+    try:
+        data = base64.b64decode(st["watched"].rsplit(":", 2)[2])
+        try:
+            bits = zlib.decompress(data)
+        except zlib.error:
+            bits = zlib.decompress(data, -15)
+        return sum(bin(x).count("1") for x in bits)
+    except Exception:
+        return None
+
+
+def episodes_out(tt):
+    with urllib.request.urlopen(f"https://v3-cinemeta.strem.io/meta/series/{tt}.json", timeout=60) as r:
+        videos = json.load(r).get("meta", {}).get("videos", [])
+    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    return sum(1 for v in videos if v.get("season") and (v.get("released") or "9") <= now)
+
+
 def watched(i):
+    # a film counts once played to the end or marked watched; a series only once every
+    # released episode is watched (timesWatched ticks over after a single episode)
     st = i.get("state") or {}
-    return bool(st.get("timesWatched") or st.get("flaggedWatched"))
+    if i.get("type") != "series":
+        return bool(st.get("timesWatched") or st.get("flaggedWatched"))
+    if not (st.get("timesWatched") or st.get("flaggedWatched") or st.get("watched")):
+        return False
+    seen = episodes_seen(st)
+    if seen is None:
+        return bool(st.get("flaggedWatched"))
+    try:
+        out = episodes_out(i["_id"])
+    except Exception:
+        return bool(st.get("flaggedWatched"))
+    return out > 0 and seen >= out
 
 
 def hide_watched(out, seen):
@@ -71,6 +104,9 @@ def main(out):
             items.append(m)
         items.sort(key=lambda m: (-ratings.get(m["id"], (0, 0))[0], -ratings.get(m["id"], (0, 0))[1]))
         # removed and Continue Watching items still count: watched is watched
+        series = [i for i in lib if i.get("type") == "series" and i["_id"].startswith("tt")]
+        print("series episodes seen/out:", ", ".join(f"{i.get('name')} {episodes_seen(i.get('state') or {})}" for i in series
+                                                     if (i.get("state") or {}).get("watched")))
         hide_watched(out, {i["_id"] for i in lib if watched(i)})
     else:
         print("library: no STREMIO_AUTH_KEY, writing empty rows")
