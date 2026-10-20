@@ -17,10 +17,10 @@ PAGE = 100          # items per catalog file; Stremio asks for skip=100, 200, ..
 MAX_ITEMS = 300     # per row / per genre
 RPDB = "https://api.ratingposterdb.com/t0-free-rpdb-rounded-blocks/imdb/poster-default/{}.jpg?fallback=true"
 TMDB_KIND = {"movie": "movie", "series": "tv"}
-# Foreign watchlist row: country filter options (TMDB english names); anything else lands in "Other"
-FOREIGN = ["Spain", "France", "Germany", "Italy", "Denmark", "Sweden", "Norway", "Netherlands", "Belgium",
-           "Poland", "Ireland", "Canada", "Australia", "Mexico", "Argentina", "Brazil", "South Korea", "Japan",
-           "India", "Israel", "Turkey", "Other"]
+# Foreign watchlist row (original language not English): language filter options (TMDB english names);
+# anything else lands in "Other"
+FOREIGN = ["Spanish", "Catalan", "German", "French", "Italian", "Portuguese", "Dutch", "Danish", "Swedish",
+           "Norwegian", "Polish", "Turkish", "Hebrew", "Korean", "Japanese", "Mandarin", "Hindi", "Other"]
 
 
 def get(url, headers=None, tries=4):

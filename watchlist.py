@@ -3,7 +3,7 @@
 IMDb blocks plain requests with an AWS WAF challenge, so the page is read
 through Jina Reader. TMDB supplies type, name, year, overview and backdrop.
 Writes catalog files to <out>/catalog/<type>/watchlist*.json, plus a "Foreign"
-row (origin outside the US and UK, or not in English) with a country filter in
+row (original language not English) with a language filter in
 <out>/catalog/<type>/foreign*. Foreign titles are tagged with their country code,
 e.g. "[ES] Money Heist", wherever meta() is used. The manifest entries live in build.py. If Jina can't deliver the full list (it sometimes
 blocks anonymous access to imdb.com for hours), the live Pages copy is reused,
@@ -84,7 +84,7 @@ def names(kind):
 
 
 def origin(m, kind, c):
-    # tag titles made outside the US/UK, or not in English: "[ES] Money Heist", country in the description
+    # tag titles not in English: "[ES] Money Heist" (origin country code), country/language in the description
     lang = c.get("original_language") or ""
     if kind == "series":
         codes = c.get("origin_country") or []
@@ -92,14 +92,16 @@ def origin(m, kind, c):
         d = tmdb(f"movie/{c['id']}")
         codes = d.get("origin_country") or [x["iso_3166_1"] for x in d.get("production_countries", [])]
     abroad = [x for x in codes if x not in HOME]
-    if lang == "en" and (not abroad or set(codes) & HOME):
+    if not lang or lang == "en":
         return
-    country = names("countries").get(abroad[0], abroad[0]) if abroad else "Other"
+    country = names("countries").get(abroad[0], abroad[0]) if abroad else ""
     language = names("languages").get(lang, lang)
     m["name"] = f"[{abroad[0] if abroad else lang.upper()}] {m['name']}"
-    m["country"] = country
+    m["language"] = language
+    if country:
+        m["country"] = country
     original = c.get("original_title") or c.get("original_name")
-    note = ", ".join(x for x in (country if abroad else "", language) if x)
+    note = ", ".join(x for x in (country, language) if x)
     if original and original != (c.get("title") or c.get("name")):
         note += f". Original title: {original}"
     m["description"] = f"{note}.\n\n{m['description']}".strip()
@@ -134,11 +136,11 @@ def main(out):
     for kind in ("movie", "series"):
         lst = [m for m in items if m["type"] == kind]
         write_pages(os.path.join(out, "catalog", kind, "watchlist"), lst)
-        foreign = [m for m in lst if "country" in m]
+        foreign = [m for m in lst if "language" in m]
         base = os.path.join(out, "catalog", kind, "foreign")
         write_pages(base, foreign)
         for g in FOREIGN:
-            write_pages(base, [m for m in foreign if (m["country"] if m["country"] in FOREIGN else "Other") == g], g)
+            write_pages(base, [m for m in foreign if (m["language"] if m["language"] in FOREIGN else "Other") == g], g)
         print(f"watchlist {kind}: {len(lst)}, foreign {len(foreign)}")
 
 
