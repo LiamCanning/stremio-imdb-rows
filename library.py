@@ -35,7 +35,7 @@ def hide_watched(out, seen):
         m = re.fullmatch(r"(.+?)(?:/(genre=[^&]+?))?(?:[/&]skip=(\d+))?\.json", rel)
         if m.group(1).split("/")[-1] in ("watchlist", "foreign"):  # curated rows keep watched titles, for rewatching
             groups.setdefault((m.group(1), m.group(2)), []).append((int(m.group(3) or 0), path))
-    dropped = 0
+    dropped, names = 0, set()
     for (base, genre), pages in groups.items():
         pages.sort()
         metas = [x for _, p in pages for x in json.load(open(p))["metas"]]
@@ -43,6 +43,7 @@ def hide_watched(out, seen):
         if len(keep) == len(metas):
             continue
         dropped += len(metas) - len(keep)
+        names |= {x["name"] for x in metas if x["id"] in seen}
         for _, p in pages:
             os.remove(p)
         root = os.path.join(out, "catalog", base)
@@ -51,7 +52,7 @@ def hide_watched(out, seen):
             path = root + ".json" if not parts else os.path.join(root, "&".join(parts) + ".json")
             os.makedirs(os.path.dirname(path), exist_ok=True)
             json.dump({"metas": keep[skip:skip + PAGE]}, open(path, "w"), separators=(",", ":"))
-    print(f"hid {dropped} watched entries from the watchlist")
+    print(f"hid {dropped} watched entries from the watchlist: {', '.join(sorted(names))}")
 
 
 def main(out):
