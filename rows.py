@@ -29,7 +29,7 @@ ROWS = [
     dict(id="best_new_series", name="Best New Series", type="series", home=True, pages=30, min_votes=5000,
          recent_years=3, params={"without_genres": NOT_REAL_TV}),
     # --- Discover only (Discover lists each type's rows in this order) ---
-    dict(id="comedy_films", name="Best Comedy Films", type="movie", pages=60, min_votes=25000,
+    dict(id="comedy_films", name="Best Comedy Films", type="movie", pages=150, min_votes=10000,
          params={"with_genres": "35", "primary_release_date.gte": "1980-01-01",
                  # strict: no drama, crime, thriller, horror, mystery, war, history or action crossovers
                  "without_genres": f"{ANIMATION},{DOCUMENTARY},{MUSIC},18,80,53,27,9648,10752,36,28",
