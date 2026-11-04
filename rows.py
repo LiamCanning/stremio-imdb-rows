@@ -39,6 +39,7 @@ ROWS = [
          params={"with_genres": "10752"}),
     dict(id="animated_films", name="Best Animated Films", type="movie", pages=40, min_votes=25000,
          params={"with_genres": str(ANIMATION)}),
+    # Walt Disney Pictures, Pixar, Walt Disney Animation Studios
     dict(id="disney_pixar", name="Disney and Pixar", type="movie", pages=30, min_votes=25000,
          params={"with_companies": "2|3|6125"}),
     dict(id="true_stories", name="True Stories", type="movie", pages=40, min_votes=10000,
