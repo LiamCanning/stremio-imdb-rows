@@ -152,7 +152,6 @@
       "Mystery",
       "Romance",
       "Science Fiction",
-      "TV Movie",
       "Thriller",
       "War",
       "Western"
@@ -180,7 +179,6 @@
       "Mystery",
       "Romance",
       "Sci-Fi and Fantasy",
-      "Soap",
       "War and Politics",
       "Western"
      ]
@@ -212,10 +210,8 @@
       "Mystery",
       "Romance",
       "Science Fiction",
-      "TV Movie",
       "Thriller",
-      "War",
-      "Western"
+      "War"
      ]
     },
     {
@@ -238,7 +234,6 @@
       "Family",
       "Mystery",
       "Sci-Fi and Fantasy",
-      "War and Politics",
       "Western"
      ]
     },
@@ -261,8 +256,7 @@
       "Family",
       "Fantasy",
       "Romance",
-      "Science Fiction",
-      "Western"
+      "Science Fiction"
      ],
      "isRequired": true
     },
@@ -289,7 +283,6 @@
       "Drama",
       "Family",
       "Fantasy",
-      "History",
       "Horror",
       "Music",
       "Mystery",
@@ -365,7 +358,6 @@
       "Mystery",
       "Romance",
       "Science Fiction",
-      "TV Movie",
       "Thriller",
       "War",
       "Western"
@@ -390,19 +382,14 @@
       "Adventure",
       "Animation",
       "Comedy",
-      "Crime",
       "Documentary",
       "Drama",
       "Fantasy",
       "History",
-      "Horror",
       "Mystery",
       "Romance",
-      "Science Fiction",
-      "TV Movie",
       "Thriller",
-      "War",
-      "Western"
+      "War"
      ],
      "isRequired": true
     },
@@ -429,16 +416,9 @@
       "Drama",
       "Family",
       "Fantasy",
-      "History",
-      "Horror",
-      "Music",
-      "Mystery",
       "Romance",
       "Science Fiction",
-      "TV Movie",
-      "Thriller",
-      "War",
-      "Western"
+      "War"
      ],
      "isRequired": true
     },
@@ -464,11 +444,7 @@
       "Drama",
       "Family",
       "Fantasy",
-      "History",
-      "Music",
-      "Mystery",
-      "Romance",
-      "Science Fiction"
+      "History"
      ],
      "isRequired": true
     },
@@ -500,7 +476,6 @@
       "Music",
       "Mystery",
       "Romance",
-      "TV Movie",
       "Thriller",
       "War",
       "Western"
@@ -529,11 +504,8 @@
       "Drama",
       "Family",
       "History",
-      "Horror",
       "Music",
-      "Mystery",
       "Romance",
-      "TV Movie",
       "Thriller",
       "War"
      ],
@@ -561,13 +533,10 @@
       "Documentary",
       "Drama",
       "Family",
-      "Fantasy",
       "History",
       "Horror",
       "Music",
       "Mystery",
-      "Science Fiction",
-      "TV Movie",
       "War"
      ],
      "isRequired": true
@@ -590,9 +559,7 @@
       "Crime",
       "Documentary",
       "Drama",
-      "Family",
-      "History",
-      "TV Movie"
+      "History"
      ],
      "isRequired": true
     },
@@ -616,14 +583,11 @@
       "Crime",
       "Documentary",
       "Drama",
-      "Family",
       "Fantasy",
       "History",
       "Romance",
       "Science Fiction",
-      "TV Movie",
-      "Thriller",
-      "War"
+      "Thriller"
      ],
      "isRequired": true
     },
@@ -654,7 +618,6 @@
       "Mystery",
       "Romance",
       "Science Fiction",
-      "TV Movie",
       "Thriller",
       "War",
       "Western"
@@ -676,7 +639,6 @@
      "options": [
       "All",
       "Action",
-      "Adventure",
       "Animation",
       "Comedy",
       "Crime",
@@ -686,7 +648,6 @@
       "Fantasy",
       "History",
       "Horror",
-      "Music",
       "Mystery",
       "Romance",
       "Science Fiction",
@@ -754,7 +715,6 @@
       "Music",
       "Mystery",
       "Romance",
-      "Science Fiction",
       "Thriller",
       "War",
       "Western"
@@ -820,8 +780,7 @@
       "Romance",
       "Science Fiction",
       "Thriller",
-      "War",
-      "Western"
+      "War"
      ],
      "isRequired": true
     },
@@ -845,7 +804,6 @@
       "Crime",
       "Drama",
       "Family",
-      "Kids",
       "Mystery",
       "Sci-Fi and Fantasy",
       "War and Politics",
@@ -873,11 +831,9 @@
       "Crime",
       "Documentary",
       "Drama",
-      "Kids",
       "Mystery",
       "Sci-Fi and Fantasy",
-      "War and Politics",
-      "Western"
+      "War and Politics"
      ],
      "isRequired": true
     },
@@ -928,10 +884,7 @@
       "Crime",
       "Drama",
       "Family",
-      "Mystery",
-      "Sci-Fi and Fantasy",
-      "Soap",
-      "War and Politics"
+      "Mystery"
      ],
      "isRequired": true
     },
@@ -958,7 +911,6 @@
       "Family",
       "Kids",
       "Mystery",
-      "Sci-Fi and Fantasy",
       "War and Politics"
      ],
      "isRequired": true
@@ -980,7 +932,6 @@
       "Action and Adventure",
       "Crime",
       "Documentary",
-      "Drama",
       "Reality"
      ],
      "isRequired": true
@@ -1006,12 +957,9 @@
       "Documentary",
       "Drama",
       "Family",
-      "Mystery",
       "News",
       "Reality",
-      "Sci-Fi and Fantasy",
-      "Soap",
-      "Talk"
+      "Sci-Fi and Fantasy"
      ],
      "isRequired": true
     },
