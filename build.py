@@ -47,6 +47,27 @@ def imdb_ratings():
     return {t: (float(r), int(v)) for t, r, v in rows}
 
 
+# TMDB genre name -> IMDb genres that confirm it. TMDB tags loosely (Forrest Gump is "Comedy"),
+# so a genre only sticks when IMDb's own genres agree.
+CONFIRM = {"Science Fiction": {"Sci-Fi"}, "Action and Adventure": {"Action", "Adventure"},
+           "Sci-Fi and Fantasy": {"Sci-Fi", "Fantasy"}, "War and Politics": {"War"}, "Kids": {"Family"},
+           "Talk": {"Talk-Show"}, "Reality": {"Reality-TV"}, "Music": {"Music", "Musical"},
+           "Soap": set(), "TV Movie": set()}
+
+
+def imdb_genres(ids):
+    """IMDb's genres (up to three per title) from title.basics, for the given ids."""
+    raw = gzip.decompress(get("https://datasets.imdbws.com/title.basics.tsv.gz")).decode()
+    out = {}
+    for line in raw.splitlines():
+        tt, _, rest = line.partition("\t")
+        if tt in ids:
+            g = rest.rsplit("\t", 1)[1]
+            if g != "\\N":
+                out[tt] = set(g.split(","))
+    return out
+
+
 def genre_names():
     names = {}
     for kind in ("movie", "tv"):
@@ -74,6 +95,7 @@ def main():
     only = set(filter(None, os.environ.get("ROWS", "").split(",")))
     rows = [r for r in ROWS if not only or r["id"] in only]
     ratings = imdb_ratings()
+    igenres = imdb_genres({t for t, (r, _) in ratings.items() if r >= MIN_RATING})
     gnames = genre_names()
     cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
 
@@ -93,13 +115,17 @@ def main():
             rating, votes = ratings[tt]
             if rating < MIN_RATING or votes < row["min_votes"]:
                 continue
+            ig = igenres.get(tt)
+            if row.get("imdb_genre") and (not ig or row["imdb_genre"] not in ig or ig & row.get("imdb_without", set())):
+                continue
+            tg = [gnames[g] for g in c.get("genre_ids", []) if g in gnames]
             seen.add(tt)
             date = c.get("release_date") or c.get("first_air_date") or ""
             items.append(dict(
                 id=tt, type=row["type"], name=c.get("title") or c.get("name"),
                 poster=RPDB.format(tt), posterShape="poster", releaseInfo=date[:4],
                 imdbRating=f"{rating:.1f}", description=c.get("overview") or "",
-                background=f"https://image.tmdb.org/t/p/w1280{c['backdrop_path']}" if c.get("backdrop_path") else None, genres=[gnames[g] for g in c.get("genre_ids", []) if g in gnames],
+                background=f"https://image.tmdb.org/t/p/w1280{c['backdrop_path']}" if c.get("backdrop_path") else None, genres=[g for g in tg if CONFIRM.get(g, {g}) & ig] if ig else tg,
                 _votes=votes,
             ))
         items.sort(key=lambda m: (-float(m["imdbRating"]), -m["_votes"]))

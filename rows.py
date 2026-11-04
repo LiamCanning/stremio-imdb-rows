@@ -16,6 +16,8 @@ ANIMATION, DOCUMENTARY, KIDS, MUSIC, NEWS, REALITY, TALK, TV_MOVIE = 16, 99, 107
 SPORT_KEYWORDS = "159290|333328|13042|6496|209476|233981|1488|2070|180491|274126"
 NOT_REAL_TV = f"{ANIMATION},{REALITY},{TALK},{NEWS},{DOCUMENTARY}"
 
+# imdb_genre: the title must also carry this IMDb genre (and none of imdb_without), since TMDB genres are loose
+
 ROWS = [
     # --- Home ---
     dict(id="best_films", name="Best Films", type="movie", home=True, pages=150, min_votes=25000,
@@ -32,7 +34,8 @@ ROWS = [
                  # strict: no drama, crime, thriller, horror, mystery, war, history or action crossovers
                  "without_genres": f"{ANIMATION},{DOCUMENTARY},{MUSIC},18,80,53,27,9648,10752,36,28",
                  # no stand-up specials or short films
-                 "without_keywords": "9716", "with_runtime.gte": "75"}),
+                 "without_keywords": "9716", "with_runtime.gte": "75"},
+         imdb_genre="Comedy", imdb_without={"Drama", "Crime", "Thriller", "Horror", "Mystery", "War"}),
     dict(id="mind_bending", name="Mind-Bending Films", type="movie", pages=40, min_votes=10000,
          params={"with_keywords": "362567|326438|275311|3307|157171|12565|231173|10854|187008|3972|298527"}),
     dict(id="modern_classics", name="Modern Classics (1980-2009)", type="movie", pages=100, min_votes=25000,
@@ -40,20 +43,20 @@ ROWS = [
     dict(id="classics", name="Classics (Pre-1980)", type="movie", pages=60, min_votes=10000,
          params={"primary_release_date.lte": "1979-12-31"}),
     dict(id="war_films", name="Best War Films", type="movie", pages=40, min_votes=25000,
-         params={"with_genres": "10752"}),
+         params={"with_genres": "10752"}, imdb_genre="War"),
     dict(id="animated_films", name="Best Animated Films", type="movie", pages=40, min_votes=25000,
-         params={"with_genres": str(ANIMATION)}),
+         params={"with_genres": str(ANIMATION)}, imdb_genre="Animation"),
     # Walt Disney Pictures, Pixar, Walt Disney Animation Studios
     dict(id="disney_pixar", name="Disney and Pixar", type="movie", pages=30, min_votes=25000,
          params={"with_companies": "2|3|6125"}),
     dict(id="true_stories", name="True Stories", type="movie", pages=40, min_votes=10000,
          params={"with_keywords": "9672"}),
     dict(id="biographies", name="Best Biopics", type="movie", pages=40, min_votes=20000,
-         params={"with_keywords": "5565", "without_genres": str(DOCUMENTARY)}),
+         params={"with_keywords": "5565", "without_genres": str(DOCUMENTARY)}, imdb_genre="Biography"),
     dict(id="documentaries", name="Best Documentaries", type="movie", pages=40, min_votes=5000,
-         params={"with_genres": str(DOCUMENTARY)}),
+         params={"with_genres": str(DOCUMENTARY)}, imdb_genre="Documentary"),
     dict(id="sports_docs", name="Best Sports Documentaries", type="movie", pages=20, min_votes=1000,
-         params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}),
+         params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}, imdb_genre="Documentary"),
     dict(id="football_films", name="Best Football Films", type="movie", pages=15, min_votes=3000,
          params={"with_keywords": "13042"}, block={"tt31853193"}),  # Gundi (vote-stuffed)
     dict(id="british_films", name="Best British Films", type="movie", pages=40, min_votes=25000,
@@ -77,9 +80,9 @@ ROWS = [
     dict(id="spanish_series", name="Best Spanish Series", type="series", pages=15, min_votes=1000,
          params={"with_origin_country": "ES", "with_original_language": "es", "without_genres": f"{ANIMATION},{KIDS},{DOCUMENTARY},{REALITY},{TALK}"}),
     dict(id="documentary_series", name="Best Documentary Series", type="series", pages=30, min_votes=3000,
-         params={"with_genres": str(DOCUMENTARY), "without_genres": f"{REALITY},{TALK},{NEWS}"}),
+         params={"with_genres": str(DOCUMENTARY), "without_genres": f"{REALITY},{TALK},{NEWS}"}, imdb_genre="Documentary"),
     dict(id="sports_doc_series", name="Best Sports Documentary Series", type="series", pages=15, min_votes=500,
-         params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}),
+         params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}, imdb_genre="Documentary"),
     dict(id="football_series", name="Best Football Series", type="series", pages=10, min_votes=300,
          params={"with_keywords": "13042"}, block={"tt0141842"}),  # The Sopranos (mis-tagged)
 ]
