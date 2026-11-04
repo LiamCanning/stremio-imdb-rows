@@ -663,6 +663,25 @@
   },
   {
    "type": "movie",
+   "id": "spanish_docs",
+   "name": "Spanish Documentaries",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Documentary",
+      "Music"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
    "id": "french_films",
    "name": "Best French Films",
    "extra": [
@@ -885,6 +904,25 @@
       "Drama",
       "Family",
       "Mystery"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "spanish_doc_series",
+   "name": "Spanish Documentary Series",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Crime",
+      "Documentary"
      ],
      "isRequired": true
     },
