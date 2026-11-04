@@ -249,6 +249,73 @@
   },
   {
    "type": "movie",
+   "id": "comedy_films",
+   "name": "Best Comedy Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "mind_bending",
+   "name": "Mind-Bending Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
    "id": "modern_classics",
    "name": "Modern Classics (1980-2009)",
    "extra": [
@@ -307,584 +374,6 @@
       "Romance",
       "Science Fiction",
       "TV Movie",
-      "Thriller",
-      "War",
-      "Western"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "mind_bending",
-   "name": "Mind-Bending Films",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action",
-      "Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Family",
-      "Fantasy",
-      "History",
-      "Horror",
-      "Music",
-      "Mystery",
-      "Romance",
-      "Science Fiction",
-      "Thriller",
-      "War",
-      "Western"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "true_stories",
-   "name": "True Stories",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action",
-      "Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Family",
-      "Fantasy",
-      "History",
-      "Horror",
-      "Music",
-      "Mystery",
-      "Romance",
-      "TV Movie",
-      "Thriller",
-      "War",
-      "Western"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "series",
-   "id": "miniseries",
-   "name": "Best Miniseries",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action and Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Drama",
-      "Family",
-      "Kids",
-      "Mystery",
-      "Sci-Fi and Fantasy",
-      "War and Politics",
-      "Western"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "series",
-   "id": "hbo",
-   "name": "Best of HBO",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action and Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Kids",
-      "Mystery",
-      "Sci-Fi and Fantasy",
-      "War and Politics",
-      "Western"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "series",
-   "id": "british_series",
-   "name": "Best British Series",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action and Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Drama",
-      "Family",
-      "History",
-      "Mystery",
-      "Sci-Fi and Fantasy",
-      "War and Politics",
-      "Western"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "british_films",
-   "name": "Best British Films",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action",
-      "Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Drama",
-      "Family",
-      "Fantasy",
-      "History",
-      "Horror",
-      "Mystery",
-      "Romance",
-      "Science Fiction",
-      "TV Movie",
-      "Thriller",
-      "War",
-      "Western"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "series",
-   "id": "spanish_series",
-   "name": "Best Spanish Series",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action and Adventure",
-      "Comedy",
-      "Crime",
-      "Drama",
-      "Family",
-      "Mystery",
-      "Sci-Fi and Fantasy",
-      "Soap",
-      "War and Politics"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "spanish_films",
-   "name": "Best Spanish Films",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action",
-      "Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Family",
-      "Fantasy",
-      "History",
-      "Horror",
-      "Music",
-      "Mystery",
-      "Romance",
-      "Science Fiction",
-      "Thriller",
-      "War"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "german_films",
-   "name": "Best German Films",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action",
-      "Adventure",
-      "Comedy",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Family",
-      "Fantasy",
-      "History",
-      "Horror",
-      "Music",
-      "Mystery",
-      "Romance",
-      "Science Fiction",
-      "Thriller",
-      "War"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "biographies",
-   "name": "Best Biopics",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action",
-      "Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Drama",
-      "Family",
-      "History",
-      "Horror",
-      "Music",
-      "Mystery",
-      "Romance",
-      "TV Movie",
-      "Thriller",
-      "War"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "documentaries",
-   "name": "Best Documentaries",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action",
-      "Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Family",
-      "Fantasy",
-      "History",
-      "Horror",
-      "Music",
-      "Mystery",
-      "Science Fiction",
-      "TV Movie",
-      "War"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "series",
-   "id": "documentary_series",
-   "name": "Best Documentary Series",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action and Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Family",
-      "Kids",
-      "Mystery",
-      "Sci-Fi and Fantasy",
-      "War and Politics"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "sports_docs",
-   "name": "Best Sports Documentaries",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Adventure",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Family",
-      "History",
-      "TV Movie"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "series",
-   "id": "sports_doc_series",
-   "name": "Best Sports Documentary Series",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action and Adventure",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Reality"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "football_films",
-   "name": "Best Football Films",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action",
-      "Adventure",
-      "Comedy",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Family",
-      "Fantasy",
-      "History",
-      "Romance",
-      "Science Fiction",
-      "TV Movie",
-      "Thriller",
-      "War"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "series",
-   "id": "football_series",
-   "name": "Best Football Series",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action and Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Family",
-      "Mystery",
-      "News",
-      "Reality",
-      "Sci-Fi and Fantasy",
-      "Soap",
-      "Talk"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "korean_films",
-   "name": "Best Korean Films",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action",
-      "Adventure",
-      "Comedy",
-      "Crime",
-      "Drama",
-      "Fantasy",
-      "History",
-      "Horror",
-      "Mystery",
-      "Romance",
-      "Science Fiction",
-      "Thriller",
-      "War",
-      "Western"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "french_films",
-   "name": "Best French Films",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action",
-      "Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Family",
-      "Fantasy",
-      "History",
-      "Horror",
-      "Music",
-      "Mystery",
-      "Romance",
-      "Science Fiction",
-      "Thriller",
-      "War"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "italian_films",
-   "name": "Best Italian Films",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action",
-      "Adventure",
-      "Comedy",
-      "Crime",
-      "Drama",
-      "Fantasy",
-      "History",
-      "Horror",
-      "Music",
-      "Mystery",
-      "Romance",
-      "Science Fiction",
       "Thriller",
       "War",
       "Western"
@@ -988,6 +477,549 @@
       "Mystery",
       "Romance",
       "Science Fiction"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "true_stories",
+   "name": "True Stories",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "TV Movie",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "biographies",
+   "name": "Best Biopics",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "TV Movie",
+      "Thriller",
+      "War"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "documentaries",
+   "name": "Best Documentaries",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Science Fiction",
+      "TV Movie",
+      "War"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "sports_docs",
+   "name": "Best Sports Documentaries",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Adventure",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "History",
+      "TV Movie"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "football_films",
+   "name": "Best Football Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Romance",
+      "Science Fiction",
+      "TV Movie",
+      "Thriller",
+      "War"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "british_films",
+   "name": "Best British Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "TV Movie",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "spanish_films",
+   "name": "Best Spanish Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller",
+      "War"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "french_films",
+   "name": "Best French Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller",
+      "War"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "italian_films",
+   "name": "Best Italian Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "german_films",
+   "name": "Best German Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller",
+      "War"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "movie",
+   "id": "korean_films",
+   "name": "Best Korean Films",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "miniseries",
+   "name": "Best Miniseries",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "Kids",
+      "Mystery",
+      "Sci-Fi and Fantasy",
+      "War and Politics",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "hbo",
+   "name": "Best of HBO",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Kids",
+      "Mystery",
+      "Sci-Fi and Fantasy",
+      "War and Politics",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "british_series",
+   "name": "Best British Series",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "History",
+      "Mystery",
+      "Sci-Fi and Fantasy",
+      "War and Politics",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "spanish_series",
+   "name": "Best Spanish Series",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "Mystery",
+      "Sci-Fi and Fantasy",
+      "Soap",
+      "War and Politics"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "documentary_series",
+   "name": "Best Documentary Series",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Kids",
+      "Mystery",
+      "Sci-Fi and Fantasy",
+      "War and Politics"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "sports_doc_series",
+   "name": "Best Sports Documentary Series",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Reality"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "series",
+   "id": "football_series",
+   "name": "Best Football Series",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Mystery",
+      "News",
+      "Reality",
+      "Sci-Fi and Fantasy",
+      "Soap",
+      "Talk"
      ],
      "isRequired": true
     },
