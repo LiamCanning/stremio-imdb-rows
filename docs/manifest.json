@@ -670,8 +670,7 @@
      "name": "genre",
      "options": [
       "All",
-      "Documentary",
-      "Music"
+      "Documentary"
      ],
      "isRequired": true
     },
