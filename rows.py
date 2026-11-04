@@ -29,8 +29,10 @@ ROWS = [
     # --- Discover only (Discover lists each type's rows in this order) ---
     dict(id="comedy_films", name="Best Comedy Films", type="movie", pages=60, min_votes=25000,
          params={"with_genres": "35", "primary_release_date.gte": "1980-01-01",
-                 # strict: no drama, crime, thriller, horror, mystery, war or history crossovers
-                 "without_genres": f"{ANIMATION},{DOCUMENTARY},{MUSIC},18,80,53,27,9648,10752,36"}),
+                 # strict: no drama, crime, thriller, horror, mystery, war, history or action crossovers
+                 "without_genres": f"{ANIMATION},{DOCUMENTARY},{MUSIC},18,80,53,27,9648,10752,36,28",
+                 # no stand-up specials or short films
+                 "without_keywords": "9716", "with_runtime.gte": "75"}),
     dict(id="mind_bending", name="Mind-Bending Films", type="movie", pages=40, min_votes=10000,
          params={"with_keywords": "362567|326438|275311|3307|157171|12565|231173|10854|187008|3972|298527"}),
     dict(id="modern_classics", name="Modern Classics (1980-2009)", type="movie", pages=100, min_votes=25000,
