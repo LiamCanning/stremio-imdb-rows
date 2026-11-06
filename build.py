@@ -119,7 +119,7 @@ def main():
             ig = igenres.get(tt)
             need = row.get("imdb_genre")
             need = {need} if isinstance(need, str) else need
-            if need and (not ig or not need & ig or ig & row.get("imdb_without", set())):
+            if need and (not ig or not need & ig) or ig and ig & row.get("imdb_without", set()):
                 continue
             tg = [gnames[g] for g in c.get("genre_ids", []) if g in gnames]
             seen.add(tt)
