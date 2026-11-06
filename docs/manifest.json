@@ -17,7 +17,8 @@
  ],
  "types": [
   "movie",
-  "series"
+  "series",
+  "Combined"
  ],
  "idPrefixes": [
   "tt"
@@ -997,6 +998,28 @@
       "News",
       "Reality",
       "Sci-Fi and Fantasy"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "Combined",
+   "id": "interesting_people",
+   "name": "Interesting People",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Documentary",
+      "Drama",
+      "History",
+      "Reality",
+      "Romance"
      ],
      "isRequired": true
     },
