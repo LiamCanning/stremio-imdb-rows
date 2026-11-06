@@ -1027,6 +1027,185 @@
      "name": "skip"
     }
    ]
+  },
+  {
+   "type": "Combined",
+   "id": "combined_spain",
+   "name": "Best of Spain",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Action and Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller",
+      "War"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "Combined",
+   "id": "combined_spanish_docs",
+   "name": "Spanish Documentaries",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Crime",
+      "Documentary"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "Combined",
+   "id": "combined_docs",
+   "name": "Best Documentaries",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Action and Adventure",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "History",
+      "Horror",
+      "Kids",
+      "Music",
+      "Mystery",
+      "War",
+      "War and Politics"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "Combined",
+   "id": "combined_sports_docs",
+   "name": "Best Sports Documentaries",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action and Adventure",
+      "Adventure",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "History",
+      "Reality"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "Combined",
+   "id": "combined_football",
+   "name": "Best Football",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Action and Adventure",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "News",
+      "Reality",
+      "Romance",
+      "Sci-Fi and Fantasy",
+      "Science Fiction",
+      "Thriller"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "Combined",
+   "id": "combined_british",
+   "name": "Best of British",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Action and Adventure",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Mystery",
+      "Romance",
+      "Sci-Fi and Fantasy",
+      "Science Fiction",
+      "Thriller",
+      "War",
+      "War and Politics",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
   }
  ],
  "behaviorHints": {
