@@ -64,7 +64,7 @@ def keep_live(out):
                 parts = ([f"genre={genre}"] if genre else []) + ([f"skip={skip}"] if skip else [])
                 rel = row + ("/" + "&".join(parts) if parts else "")
                 try:
-                    data = get(LIVE.format(kind, rel.replace(" ", "%20")), tries=2)
+                    data = get(LIVE.format(kind, rel.replace(" ", "%20")))  # Pages throws the odd 503
                 except urllib.error.HTTPError as e:
                     if e.code != 404:
                         raise

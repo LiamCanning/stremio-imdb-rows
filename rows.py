@@ -106,12 +106,14 @@ ROWS = [
     dict(id="spanish_crime_series", name="Spanish Crime Series", type="series", hidden=True, pages=10, min_votes=500,
          params={"with_origin_country": "ES", "with_original_language": "es", "with_genres": "80|9648",
                  "without_genres": f"35,{ANIMATION},{DOCUMENTARY},{REALITY}"},
-         imdb_genre={"Crime", "Thriller", "Mystery"}, imdb_without={"Comedy"}),
+         imdb_genre={"Crime", "Thriller", "Mystery"}, imdb_without={"Comedy"},
+         block={"tt6468322"}),  # La Casa de Papel: seen, not wanted
     dict(id="true_story_series", name="True Story Series", type="series", hidden=True, pages=15, min_votes=3000,
          params={"with_keywords": "9672", "without_genres": f"{ANIMATION},{DOCUMENTARY},{REALITY},{TALK}"}),
     dict(id="crime_films", name="Crime Films", type="movie", hidden=True, pages=30, min_votes=10000,
          params={"with_origin_country": UK_NORDIC, "with_genres": "80", "without_genres": f"35,{ANIMATION},{DOCUMENTARY}"},
-         imdb_genre="Crime", imdb_without={"Comedy"}),
+         # no blockbuster co-productions (The Dark Knight Rises carries GB)
+         imdb_genre="Crime", imdb_without={"Comedy", "Action", "Sci-Fi", "Fantasy"}),
     dict(id="crime_series", name="Crime Series", type="series", hidden=True, pages=20, min_votes=3000,
          params={"with_origin_country": UK_NORDIC, "with_genres": "80",
                  "without_genres": f"35,{ANIMATION},{DOCUMENTARY},{REALITY},{KIDS}"},
