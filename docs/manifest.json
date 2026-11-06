@@ -303,7 +303,7 @@
   {
    "type": "movie",
    "id": "modern_classics",
-   "name": "Modern Classics (1980-2009)",
+   "name": "Modern Classics (80s-00s)",
    "extra": [
     {
      "name": "genre",
@@ -457,7 +457,7 @@
   {
    "type": "movie",
    "id": "true_stories",
-   "name": "True Stories",
+   "name": "Based on True Events",
    "extra": [
     {
      "name": "genre",
@@ -509,58 +509,6 @@
       "Romance",
       "Thriller",
       "War"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "documentaries",
-   "name": "Best Documentaries",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action",
-      "Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Family",
-      "History",
-      "Horror",
-      "Music",
-      "Mystery",
-      "War"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "movie",
-   "id": "sports_docs",
-   "name": "Best Sports Documentaries",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Adventure",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "History"
      ],
      "isRequired": true
     },
@@ -933,54 +881,6 @@
   },
   {
    "type": "series",
-   "id": "documentary_series",
-   "name": "Best Documentary Series",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action and Adventure",
-      "Animation",
-      "Comedy",
-      "Crime",
-      "Documentary",
-      "Drama",
-      "Family",
-      "Kids",
-      "Mystery",
-      "War and Politics"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "series",
-   "id": "sports_doc_series",
-   "name": "Best Sports Documentary Series",
-   "extra": [
-    {
-     "name": "genre",
-     "options": [
-      "All",
-      "Action and Adventure",
-      "Crime",
-      "Documentary",
-      "Reality"
-     ],
-     "isRequired": true
-    },
-    {
-     "name": "skip"
-    }
-   ]
-  },
-  {
-   "type": "series",
    "id": "football_series",
    "name": "Best Football Series",
    "extra": [
@@ -1020,6 +920,33 @@
       "History",
       "Reality",
       "Romance"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "Combined",
+   "id": "combined_spanish_crime",
+   "name": "Spanish Crime and Thrillers",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Action and Adventure",
+      "Crime",
+      "Drama",
+      "Fantasy",
+      "Horror",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "Thriller"
      ],
      "isRequired": true
     },
@@ -1072,6 +999,111 @@
       "All",
       "Crime",
       "Documentary"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "Combined",
+   "id": "combined_true_story",
+   "name": "Based on a True Story",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Action and Adventure",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Sci-Fi and Fantasy",
+      "Thriller",
+      "War",
+      "Western"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "Combined",
+   "id": "combined_crime",
+   "name": "Crime Dramas (UK and Nordic)",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Action",
+      "Action and Adventure",
+      "Adventure",
+      "Crime",
+      "Drama",
+      "Fantasy",
+      "Mystery",
+      "Romance",
+      "Sci-Fi and Fantasy",
+      "Thriller"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "Combined",
+   "id": "combined_true_crime",
+   "name": "True Crime",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Crime",
+      "Documentary",
+      "Mystery"
+     ],
+     "isRequired": true
+    },
+    {
+     "name": "skip"
+    }
+   ]
+  },
+  {
+   "type": "Combined",
+   "id": "combined_business",
+   "name": "Business and Power",
+   "extra": [
+    {
+     "name": "genre",
+     "options": [
+      "All",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "History"
      ],
      "isRequired": true
     },
