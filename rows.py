@@ -23,6 +23,15 @@ TRUE_CRIME_KEYWORDS = "33722|10714|161982"  # true crime, serial killer, murder 
 # corporate scandal, wall street, business, finance, high finance, fraud, entrepreneur, economics, financial crisis, con artist
 BUSINESS_KEYWORDS = "386332|5636|12094|246911|281170|4373|171068|14737|165193|10453"
 
+# Non-British productions TMDB tags GB (shot or co-financed in the UK)
+HOLLYWOOD_GB = {
+    "tt1375666", "tt1345836", "tt33764258", "tt6723592",  # Nolan: Inception, Dark Knight Rises, The Odyssey, Tenet
+    "tt1454468", "tt2119532", "tt1028532", "tt7653254", "tt0091217", "tt1020072", "tt0112818", "tt0289992",
+    "tt4540710", "tt3040964", "tt0272152", "tt0215750", "tt0159365", "tt0758774", "tt17279496", "tt0320691",
+    "tt0936501", "tt0342258", "tt2494362", "tt1355631", "tt2547584", "tt2719848", "tt2866360", "tt0477139",
+    "tt0104779", "tt1638355", "tt4575576", "tt0317740", "tt17526714", "tt1895315", "tt3721936",
+}
+
 ROWS = [
     # --- Home ---
     dict(id="best_films", name="Best Films", type="movie", home=True, pages=150, min_votes=25000,
@@ -65,11 +74,12 @@ ROWS = [
          params={"with_genres": str(DOCUMENTARY)}, imdb_genre="Documentary"),
     dict(id="sports_docs", name="Best Sports Documentaries", type="movie", hidden=True, pages=20, min_votes=1000,
          params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}, imdb_genre="Documentary"),
-    dict(id="football_films", name="Best Football Films", type="movie", pages=15, min_votes=3000,
+    dict(id="football_films", name="Best Football Films", type="movie", pages=15, min_votes=500,
          params={"with_keywords": "13042", "without_genres": str(ANIMATION)}, block={"tt31853193"},  # Gundi (vote-stuffed)
          imdb_genre={"Sport", "Documentary"}, imdb_without={"Animation"}),  # TMDB "football" keyword is loose
     dict(id="british_films", name="Best British Films", type="movie", pages=40, min_votes=25000,
-         params={"with_origin_country": "GB", "without_genres": f"{DOCUMENTARY},{MUSIC}"}),
+         params={"with_origin_country": "GB", "with_original_language": "en", "without_genres": f"{DOCUMENTARY},{MUSIC}"},
+         block=HOLLYWOOD_GB),  # TMDB tags Hollywood and European co-productions GB
     dict(id="spanish_films", name="Best Spanish Films", type="movie", pages=20, min_votes=3000,
          params={"with_origin_country": "ES", "with_original_language": "es"}),
     dict(id="spanish_docs", name="Spanish Documentaries", type="movie", pages=15, min_votes=200,
