@@ -7,7 +7,7 @@ Stdlib only.
 import csv, datetime, gzip, io, json, os, shutil, sys, time, urllib.parse, urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
-from rows import BLOCK, MIN_RATING, ROWS
+from rows import BLOCK, COMBINED, MIN_RATING, ROWS
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "docs")
@@ -132,9 +132,36 @@ def main():
         built[row["id"]] = items
         print(f"{row['id']:16} candidates={len(cands):5} kept={len(items):4} top={[m['name'] for m in items[:3]]}")
 
+    for row in COMBINED:
+        built[row["id"]] = combined(row, ratings, igenres, gnames)
+        rows.append(dict(row, type="Combined"))
+        print(f"{row['id']:16} kept={len(built[row['id']]):4}")
+
     os.makedirs(os.path.dirname(CACHE), exist_ok=True)
     json.dump(cache, open(CACHE, "w"), separators=(",", ":"), sort_keys=True)
     write(rows, built)
+
+
+def combined(row, ratings, igenres, gnames):
+    """A hand-picked row of films and series; each item keeps its own type so it opens and plays normally."""
+    items = []
+    for tt in row["ids"]:
+        res = tmdb(f"find/{tt}", external_source="imdb_id")
+        # series first: TMDB wrongly attaches some series' IMDb ids to a film too
+        for kind, key, date_key in (("series", "tv_results", "first_air_date"), ("movie", "movie_results", "release_date")):
+            if res.get(key) and tt in ratings:
+                c = res[key][0]
+                tg = [gnames[g] for g in c.get("genre_ids", []) if g in gnames]
+                ig = igenres.get(tt)
+                items.append(dict(
+                    id=tt, type=kind, name=c.get("title") or c.get("name"), poster=RPDB.format(tt),
+                    posterShape="poster", releaseInfo=(c.get(date_key) or "")[:4],
+                    imdbRating=f"{ratings[tt][0]:.1f}", description=c.get("overview") or "",
+                    background=f"https://image.tmdb.org/t/p/w1280{c['backdrop_path']}" if c.get("backdrop_path") else None,
+                    genres=[g for g in tg if CONFIRM.get(g, {g}) & ig] if ig else tg, _votes=ratings[tt][1]))
+                break
+    items.sort(key=lambda m: (-float(m["imdbRating"]), -m["_votes"]))
+    return items
 
 
 def write(rows, built):
@@ -172,7 +199,7 @@ def write(rows, built):
         id="org.liamcanning.imdbrows", version="1.0." + datetime.date.today().strftime("%Y%m%d"),
         name="IMDb Rows", description="Curated rows sorted by IMDb rating, rebuilt weekly.",
         resources=["catalog", dict(name="stream", types=["series"], idPrefixes=["tt"])],  # stream = episodes.py
-        types=["movie", "series"], idPrefixes=["tt"], catalogs=catalogs,
+        types=["movie", "series", "Combined"], idPrefixes=["tt"], catalogs=catalogs,
         behaviorHints=dict(configurable=False),
     )
     json.dump(manifest, open(os.path.join(OUT, "manifest.json"), "w"), indent=1)

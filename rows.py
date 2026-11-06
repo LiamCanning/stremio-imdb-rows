@@ -94,3 +94,38 @@ ROWS = [
     dict(id="football_series", name="Best Football Series", type="series", pages=10, min_votes=300,
          params={"with_keywords": "13042"}, block={"tt0141842"}),  # The Sopranos (mis-tagged)
 ]
+
+# Hand-picked rows that mix films and series. They sit under their own "Combined" type in Discover,
+# highest IMDb rating first; MIN_RATING does not apply.
+COMBINED = [
+    dict(id="interesting_people", name="Interesting People", ids=[
+        # chefs and kitchens
+        "tt2845786",   # Anthony Bourdain: Parts Unknown
+        "tt4295140",   # Chef's Table
+        "tt1772925",   # Jiro Dreams of Sushi
+        "tt14512538",  # Roadrunner: A Film About Anthony Bourdain
+        "tt0409608",   # Ramsay's Kitchen Nightmares (UK)
+        "tt4125856",   # For Grace
+        "tt2014351",   # Spinning Plates
+        "tt2204371",   # Somm
+        # fashion
+        "tt6510332",   # McQueen
+        "tt1621444",   # Bill Cunningham New York
+        "tt2053352",   # Diana Vreeland: The Eye Has to Travel
+        "tt18177528",  # The New Look
+        "tt16024584",  # Cristóbal Balenciaga
+        "tt11284244",  # Martin Margiela: In His Own Words
+        "tt27052740",  # Becoming Karl Lagerfeld
+        "tt3539664",   # Dior and I
+        "tt1176244",   # Valentino: The Last Emperor
+        "tt1331025",   # The September Issue
+        "tt4157220",   # Iris
+        "tt1606382",   # L'amour fou (Yves Saint Laurent)
+        "tt2707858",   # Yves Saint Laurent
+        "tt2707848",   # Saint Laurent
+        "tt1035736",   # Coco Before Chanel
+        "tt1023441",   # Coco Chanel & Igor Stravinsky
+        "tt4378628",   # Westwood: Punk, Icon, Activist
+        "tt11214590",  # House of Gucci
+    ]),
+]
