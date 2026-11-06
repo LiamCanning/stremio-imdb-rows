@@ -6,6 +6,7 @@ Stdlib only.
 """
 import csv, datetime, gzip, io, json, os, shutil, sys, time, urllib.parse, urllib.request
 from concurrent.futures import ThreadPoolExecutor
+from itertools import zip_longest
 
 from rows import BLOCK, COMBINED, MIN_RATING, ROWS
 
@@ -116,7 +117,9 @@ def main():
             if rating < MIN_RATING or votes < row["min_votes"]:
                 continue
             ig = igenres.get(tt)
-            if row.get("imdb_genre") and (not ig or row["imdb_genre"] not in ig or ig & row.get("imdb_without", set())):
+            need = row.get("imdb_genre")
+            need = {need} if isinstance(need, str) else need
+            if need and (not ig or not need & ig or ig & row.get("imdb_without", set())):
                 continue
             tg = [gnames[g] for g in c.get("genre_ids", []) if g in gnames]
             seen.add(tt)
@@ -136,8 +139,13 @@ def main():
         if "merge" in row:
             if not all(r in built for r in row["merge"]):  # a ROWS= partial build left one out
                 continue
-            items = sorted((m for r in row["merge"] for m in built[r]), key=lambda m: (-float(m["imdbRating"]), -m["_votes"]))
-            built[row["id"]] = list({m["id"]: m for m in reversed(items)}.values())[::-1]
+            key = lambda m: (-float(m["imdbRating"]), -m["_votes"])
+            items = sorted((m for r in row["merge"] for m in built[r]), key=key)
+            if row.get("split"):  # alternate film, series, film... while both last
+                films, series = [m for m in items if m["type"] == "movie"], [m for m in items if m["type"] == "series"]
+                items = [m for pair in zip_longest(films, series) for m in pair if m]
+            seen = set()
+            built[row["id"]] = [m for m in items if not (m["id"] in seen or seen.add(m["id"]))]
         else:
             built[row["id"]] = combined(row, ratings, igenres, gnames)
         rows.append(dict(row, type="Combined"))
@@ -181,6 +189,8 @@ def write(rows, built):
                     ("library", "Library (IMDb)", [dict(name="skip")]))
                 for t in ("movie", "series")]
     for row in rows:
+        if row.get("hidden"):
+            continue
         items = built[row["id"]]
         genres = sorted({g for m in items for g in m["genres"]})
         if row.get("home"):

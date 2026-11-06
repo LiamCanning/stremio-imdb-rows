@@ -16,7 +16,12 @@ ANIMATION, DOCUMENTARY, KIDS, MUSIC, NEWS, REALITY, TALK, TV_MOVIE = 16, 99, 107
 SPORT_KEYWORDS = "159290|333328|13042|6496|209476|233981|1488|2070|180491|274126"
 NOT_REAL_TV = f"{ANIMATION},{REALITY},{TALK},{NEWS},{DOCUMENTARY}"
 
-# imdb_genre: the title must also carry this IMDb genre (and none of imdb_without), since TMDB genres are loose
+# imdb_genre: the title must also carry this IMDb genre, or one of a set (and none of imdb_without), since TMDB genres are loose
+# hidden: built only to feed a COMBINED merge; not listed under Movies or Series
+UK_NORDIC = "GB|SE|DK|NO|IS|FI"
+TRUE_CRIME_KEYWORDS = "33722|10714|161982"  # true crime, serial killer, murder investigation
+# corporate scandal, wall street, business, finance, high finance, fraud, entrepreneur, economics, financial crisis, con artist
+BUSINESS_KEYWORDS = "386332|5636|12094|246911|281170|4373|171068|14737|165193|10453"
 
 ROWS = [
     # --- Home ---
@@ -38,7 +43,7 @@ ROWS = [
          imdb_genre="Comedy", imdb_without={"Drama", "Crime", "Thriller", "Horror", "Mystery", "War"}),
     dict(id="mind_bending", name="Mind-Bending Films", type="movie", pages=40, min_votes=10000,
          params={"with_keywords": "362567|326438|275311|3307|157171|12565|231173|10854|187008|3972|298527"}),
-    dict(id="modern_classics", name="Modern Classics (1980-2009)", type="movie", pages=100, min_votes=25000,
+    dict(id="modern_classics", name="Modern Classics (80s-00s)", type="movie", pages=100, min_votes=25000,
          params={"primary_release_date.gte": "1980-01-01", "primary_release_date.lte": "2009-12-31"}),
     dict(id="classics", name="Classics (Pre-1980)", type="movie", pages=60, min_votes=10000,
          params={"primary_release_date.lte": "1979-12-31"}),
@@ -49,13 +54,13 @@ ROWS = [
     # Walt Disney Pictures, Pixar, Walt Disney Animation Studios
     dict(id="disney_pixar", name="Disney and Pixar", type="movie", pages=30, min_votes=25000,
          params={"with_companies": "2|3|6125"}),
-    dict(id="true_stories", name="True Stories", type="movie", pages=40, min_votes=10000,
+    dict(id="true_stories", name="Based on True Events", type="movie", pages=40, min_votes=10000,
          params={"with_keywords": "9672"}),
     dict(id="biographies", name="Best Biopics", type="movie", pages=40, min_votes=20000,
          params={"with_keywords": "5565", "without_genres": str(DOCUMENTARY)}, imdb_genre="Biography"),
-    dict(id="documentaries", name="Best Documentaries", type="movie", pages=40, min_votes=5000,
+    dict(id="documentaries", name="Best Documentaries", type="movie", hidden=True, pages=40, min_votes=5000,
          params={"with_genres": str(DOCUMENTARY)}, imdb_genre="Documentary"),
-    dict(id="sports_docs", name="Best Sports Documentaries", type="movie", pages=20, min_votes=1000,
+    dict(id="sports_docs", name="Best Sports Documentaries", type="movie", hidden=True, pages=20, min_votes=1000,
          params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}, imdb_genre="Documentary"),
     dict(id="football_films", name="Best Football Films", type="movie", pages=15, min_votes=3000,
          params={"with_keywords": "13042"}, block={"tt31853193"}),  # Gundi (vote-stuffed)
@@ -87,16 +92,45 @@ ROWS = [
          params={"with_origin_country": "ES", "with_original_language": "es", "with_genres": str(DOCUMENTARY),
                  "without_genres": f"{REALITY},{TALK},{NEWS}", "without_keywords": SPORT_KEYWORDS},
          imdb_genre="Documentary", imdb_without={"Sport", "Music", "Musical"}),
-    dict(id="documentary_series", name="Best Documentary Series", type="series", pages=30, min_votes=3000,
+    dict(id="documentary_series", name="Best Documentary Series", type="series", hidden=True, pages=30, min_votes=3000,
          params={"with_genres": str(DOCUMENTARY), "without_genres": f"{REALITY},{TALK},{NEWS}"}, imdb_genre="Documentary"),
-    dict(id="sports_doc_series", name="Best Sports Documentary Series", type="series", pages=15, min_votes=500,
+    dict(id="sports_doc_series", name="Best Sports Documentary Series", type="series", hidden=True, pages=15, min_votes=500,
          params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}, imdb_genre="Documentary"),
     dict(id="football_series", name="Best Football Series", type="series", pages=10, min_votes=300,
          params={"with_keywords": "13042"}, block={"tt0141842"}),  # The Sopranos (mis-tagged)
+    # --- hidden sources for COMBINED merges ---
+    dict(id="spanish_crime_films", name="Spanish Crime Films", type="movie", hidden=True, pages=15, min_votes=2000,
+         params={"with_origin_country": "ES", "with_original_language": "es", "with_genres": "80|53|9648",
+                 "without_genres": f"35,{ANIMATION},{DOCUMENTARY}"},
+         imdb_genre={"Crime", "Thriller", "Mystery"}, imdb_without={"Comedy"}),
+    dict(id="spanish_crime_series", name="Spanish Crime Series", type="series", hidden=True, pages=10, min_votes=500,
+         params={"with_origin_country": "ES", "with_original_language": "es", "with_genres": "80|9648",
+                 "without_genres": f"35,{ANIMATION},{DOCUMENTARY},{REALITY}"},
+         imdb_genre={"Crime", "Thriller", "Mystery"}, imdb_without={"Comedy"}),
+    dict(id="true_story_series", name="True Story Series", type="series", hidden=True, pages=15, min_votes=3000,
+         params={"with_keywords": "9672", "without_genres": f"{ANIMATION},{DOCUMENTARY},{REALITY},{TALK}"}),
+    dict(id="crime_films", name="Crime Films", type="movie", hidden=True, pages=30, min_votes=10000,
+         params={"with_origin_country": UK_NORDIC, "with_genres": "80", "without_genres": f"35,{ANIMATION},{DOCUMENTARY}"},
+         imdb_genre="Crime", imdb_without={"Comedy"}),
+    dict(id="crime_series", name="Crime Series", type="series", hidden=True, pages=20, min_votes=3000,
+         params={"with_origin_country": UK_NORDIC, "with_genres": "80",
+                 "without_genres": f"35,{ANIMATION},{DOCUMENTARY},{REALITY},{KIDS}"},
+         imdb_genre="Crime", imdb_without={"Comedy"}),
+    dict(id="true_crime_films", name="True Crime Films", type="movie", hidden=True, pages=15, min_votes=2000,
+         params={"with_genres": str(DOCUMENTARY), "with_keywords": TRUE_CRIME_KEYWORDS}, imdb_genre="Crime"),
+    dict(id="true_crime_series", name="True Crime Series", type="series", hidden=True, pages=15, min_votes=1000,
+         params={"with_genres": str(DOCUMENTARY), "with_keywords": TRUE_CRIME_KEYWORDS,
+                 "without_genres": f"{REALITY},{TALK},{NEWS}"}, imdb_genre="Crime"),
+    dict(id="business_films", name="Business Films", type="movie", hidden=True, pages=15, min_votes=2000,
+         params={"with_genres": str(DOCUMENTARY), "with_keywords": BUSINESS_KEYWORDS}, imdb_genre="Documentary"),
+    dict(id="business_series", name="Business Series", type="series", hidden=True, pages=10, min_votes=500,
+         params={"with_genres": str(DOCUMENTARY), "with_keywords": BUSINESS_KEYWORDS,
+                 "without_genres": f"{REALITY},{TALK},{NEWS}"}, imdb_genre="Documentary"),
 ]
 
 # Rows that mix films and series under their own "Combined" type in Discover, highest IMDb rating first.
-# ids: hand-picked titles (MIN_RATING does not apply); merge: the film and series rows above, joined.
+# ids: hand-picked titles (MIN_RATING does not apply); merge: the film and series rows above, joined;
+# split: alternate films and series instead of pure rating order (series rate higher and would crowd films out).
 COMBINED = [
     dict(id="interesting_people", name="Interesting People", ids=[
         # chefs and kitchens
@@ -128,10 +162,15 @@ COMBINED = [
         "tt4378628",   # Westwood: Punk, Icon, Activist
         "tt11214590",  # House of Gucci
     ]),
+    dict(id="combined_spanish_crime", name="Spanish Crime and Thrillers", merge=["spanish_crime_films", "spanish_crime_series"]),
     dict(id="combined_spain", name="Best of Spain", merge=["spanish_films", "spanish_series"]),
     dict(id="combined_spanish_docs", name="Spanish Documentaries", merge=["spanish_docs", "spanish_doc_series"]),
-    dict(id="combined_docs", name="Best Documentaries", merge=["documentaries", "documentary_series"]),
+    dict(id="combined_true_story", name="Based on a True Story", merge=["true_stories", "biographies", "true_story_series"]),
+    dict(id="combined_crime", name="Crime Dramas (UK and Nordic)", merge=["crime_films", "crime_series"]),
+    dict(id="combined_true_crime", name="True Crime", merge=["true_crime_films", "true_crime_series"]),
+    dict(id="combined_business", name="Business and Power", merge=["business_films", "business_series"]),
+    dict(id="combined_docs", name="Best Documentaries", merge=["documentaries", "documentary_series"], split=True),
     dict(id="combined_sports_docs", name="Best Sports Documentaries", merge=["sports_docs", "sports_doc_series"]),
     dict(id="combined_football", name="Best Football", merge=["football_films", "football_series"]),
-    dict(id="combined_british", name="Best of British", merge=["british_films", "british_series"]),
+    dict(id="combined_british", name="Best of British", merge=["british_films", "british_series"], split=True),
 ]
