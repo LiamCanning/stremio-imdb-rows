@@ -28,7 +28,7 @@ ROWS = [
     dict(id="best_films", name="Best Films", type="movie", home=True, pages=150, min_votes=25000,
          params={}),
     dict(id="best_series", name="Best Series", type="series", home=True, pages=60, min_votes=20000,
-         params={"without_genres": NOT_REAL_TV}),
+         params={"without_genres": NOT_REAL_TV}, imdb_without={"Reality-TV", "Talk-Show", "Game-Show"}),
     dict(id="best_new_films", name="Best New Films", type="movie", home=True, pages=40, min_votes=10000,
          recent_years=3, params={"without_genres": str(ANIMATION)}),
     dict(id="best_new_series", name="Best New Series", type="series", home=True, pages=30, min_votes=5000,
@@ -42,7 +42,9 @@ ROWS = [
                  "without_keywords": "9716", "with_runtime.gte": "75"},
          imdb_genre="Comedy", imdb_without={"Drama", "Crime", "Thriller", "Horror", "Mystery", "War"}),
     dict(id="mind_bending", name="Mind-Bending Films", type="movie", pages=40, min_votes=10000,
-         params={"with_keywords": "362567|326438|275311|3307|157171|12565|231173|10854|187008|3972|298527"}),
+         params={"with_keywords": "362567|326438|275311|3307|157171|12565|231173|10854|187008|3972|298527"},
+         # plot-twist keywords catch straight crime dramas (Pulp Fiction, The Irishman) too
+         imdb_genre={"Mystery", "Thriller", "Sci-Fi", "Fantasy"}),
     dict(id="modern_classics", name="Modern Classics (80s-00s)", type="movie", pages=100, min_votes=25000,
          params={"primary_release_date.gte": "1980-01-01", "primary_release_date.lte": "2009-12-31"}),
     dict(id="classics", name="Classics (Pre-1980)", type="movie", pages=60, min_votes=10000,
@@ -55,7 +57,8 @@ ROWS = [
     dict(id="disney_pixar", name="Disney and Pixar", type="movie", pages=30, min_votes=25000,
          params={"with_companies": "2|3|6125"}),
     dict(id="true_stories", name="Based on True Events", type="movie", pages=40, min_votes=10000,
-         params={"with_keywords": "9672"}),
+         params={"with_keywords": "9672", "without_genres": f"{ANIMATION},{DOCUMENTARY}"},
+         imdb_without={"Documentary", "Horror", "Animation", "Sci-Fi"}),  # The Conjuring "true story" horror
     dict(id="biographies", name="Best Biopics", type="movie", pages=40, min_votes=20000,
          params={"with_keywords": "5565", "without_genres": str(DOCUMENTARY)}, imdb_genre="Biography"),
     dict(id="documentaries", name="Best Documentaries", type="movie", hidden=True, pages=40, min_votes=5000,
@@ -63,7 +66,8 @@ ROWS = [
     dict(id="sports_docs", name="Best Sports Documentaries", type="movie", hidden=True, pages=20, min_votes=1000,
          params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}, imdb_genre="Documentary"),
     dict(id="football_films", name="Best Football Films", type="movie", pages=15, min_votes=3000,
-         params={"with_keywords": "13042"}, block={"tt31853193"}),  # Gundi (vote-stuffed)
+         params={"with_keywords": "13042", "without_genres": str(ANIMATION)}, block={"tt31853193"},  # Gundi (vote-stuffed)
+         imdb_genre={"Sport", "Documentary"}, imdb_without={"Animation"}),  # TMDB "football" keyword is loose
     dict(id="british_films", name="Best British Films", type="movie", pages=40, min_votes=25000,
          params={"with_origin_country": "GB", "without_genres": f"{DOCUMENTARY},{MUSIC}"}),
     dict(id="spanish_films", name="Best Spanish Films", type="movie", pages=20, min_votes=3000,
@@ -81,11 +85,13 @@ ROWS = [
     dict(id="korean_films", name="Best Korean Films", type="movie", pages=30, min_votes=10000,
          params={"with_origin_country": "KR", "with_original_language": "ko"}),
     dict(id="miniseries", name="Best Miniseries", type="series", pages=30, min_votes=5000,
-         params={"with_type": "2", "without_genres": f"{DOCUMENTARY},{REALITY}"}),
+         params={"with_type": "2", "without_genres": f"{ANIMATION},{DOCUMENTARY},{REALITY}"},
+         imdb_without={"Animation", "Documentary", "Reality-TV"}),
     dict(id="hbo", name="Best of HBO", type="series", pages=20, min_votes=10000,
          params={"with_networks": "49", "without_genres": f"{REALITY},{TALK}"}),
     dict(id="british_series", name="Best British Series", type="series", pages=30, min_votes=5000,
-         params={"with_origin_country": "GB", "without_genres": f"{DOCUMENTARY},{REALITY},{KIDS},{TALK},{NEWS}"}),
+         params={"with_origin_country": "GB", "without_genres": f"{ANIMATION},{DOCUMENTARY},{REALITY},{KIDS},{TALK},{NEWS}"},
+         imdb_without={"Animation", "Reality-TV", "Talk-Show", "Game-Show"}),  # no panel shows
     dict(id="spanish_series", name="Best Spanish Series", type="series", pages=15, min_votes=1000,
          params={"with_origin_country": "ES", "with_original_language": "es", "without_genres": f"{ANIMATION},{KIDS},{DOCUMENTARY},{REALITY},{TALK}"}),
     dict(id="spanish_doc_series", name="Spanish Documentary Series", type="series", pages=10, min_votes=100,
@@ -97,7 +103,8 @@ ROWS = [
     dict(id="sports_doc_series", name="Best Sports Documentary Series", type="series", hidden=True, pages=15, min_votes=500,
          params={"with_genres": str(DOCUMENTARY), "with_keywords": SPORT_KEYWORDS}, imdb_genre="Documentary"),
     dict(id="football_series", name="Best Football Series", type="series", pages=10, min_votes=300,
-         params={"with_keywords": "13042"}, block={"tt0141842"}),  # The Sopranos (mis-tagged)
+         params={"with_keywords": "13042", "without_genres": str(ANIMATION)}, block={"tt0141842"},  # The Sopranos (mis-tagged)
+         imdb_genre={"Sport", "Documentary"}, imdb_without={"Animation"}),
     # --- hidden sources for COMBINED merges ---
     dict(id="spanish_crime_films", name="Spanish Crime Films", type="movie", hidden=True, pages=15, min_votes=2000,
          params={"with_origin_country": "ES", "with_original_language": "es", "with_genres": "80|53|9648",
