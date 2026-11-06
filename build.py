@@ -133,7 +133,13 @@ def main():
         print(f"{row['id']:16} candidates={len(cands):5} kept={len(items):4} top={[m['name'] for m in items[:3]]}")
 
     for row in COMBINED:
-        built[row["id"]] = combined(row, ratings, igenres, gnames)
+        if "merge" in row:
+            if not all(r in built for r in row["merge"]):  # a ROWS= partial build left one out
+                continue
+            items = sorted((m for r in row["merge"] for m in built[r]), key=lambda m: (-float(m["imdbRating"]), -m["_votes"]))
+            built[row["id"]] = list({m["id"]: m for m in reversed(items)}.values())[::-1]
+        else:
+            built[row["id"]] = combined(row, ratings, igenres, gnames)
         rows.append(dict(row, type="Combined"))
         print(f"{row['id']:16} kept={len(built[row['id']]):4}")
 

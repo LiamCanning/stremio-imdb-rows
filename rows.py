@@ -95,8 +95,8 @@ ROWS = [
          params={"with_keywords": "13042"}, block={"tt0141842"}),  # The Sopranos (mis-tagged)
 ]
 
-# Hand-picked rows that mix films and series. They sit under their own "Combined" type in Discover,
-# highest IMDb rating first; MIN_RATING does not apply.
+# Rows that mix films and series under their own "Combined" type in Discover, highest IMDb rating first.
+# ids: hand-picked titles (MIN_RATING does not apply); merge: the film and series rows above, joined.
 COMBINED = [
     dict(id="interesting_people", name="Interesting People", ids=[
         # chefs and kitchens
@@ -128,4 +128,10 @@ COMBINED = [
         "tt4378628",   # Westwood: Punk, Icon, Activist
         "tt11214590",  # House of Gucci
     ]),
+    dict(id="combined_spain", name="Best of Spain", merge=["spanish_films", "spanish_series"]),
+    dict(id="combined_spanish_docs", name="Spanish Documentaries", merge=["spanish_docs", "spanish_doc_series"]),
+    dict(id="combined_docs", name="Best Documentaries", merge=["documentaries", "documentary_series"]),
+    dict(id="combined_sports_docs", name="Best Sports Documentaries", merge=["sports_docs", "sports_doc_series"]),
+    dict(id="combined_football", name="Best Football", merge=["football_films", "football_series"]),
+    dict(id="combined_british", name="Best of British", merge=["british_films", "british_series"]),
 ]
