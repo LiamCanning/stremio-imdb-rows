@@ -24,5 +24,7 @@ Local: `TMDB_TOKEN=... python3 build.py` (optional `ROWS=id1,id2`).
 - Watchlist was briefly refreshed every 3 hours; now refreshed daily with everything else.
 - TMDB `find` by IMDb id sometimes attaches a series' id to a film too, so `watchlist.meta` checks series first.
 - If a run fails, the previous Pages deploy stays live.
-- Watchlist: Jina returned HTTP 402 (Payment Required) from 6 Nov 2026, so the live copy is kept; likely the `JINA_API_KEY` is out of credit. The live-copy fallback retries Pages 503s.
+- Watchlist reads Jina keyless (20 req/min) since 7 Nov 2026: the paid `JINA_API_KEY` ran out (HTTP 402) and the secret was deleted. Jina keys get 10M tokens once, no reset; a 402 means top up or drop the key. The live-copy fallback retries Pages 503s.
+- Best British Films (`british_films`, feeds Combined Best of British): GB origin + `with_original_language: en`, docs/music excluded, and `HOLLYWOOD_GB` in rows.py blocks US tentpoles tagged GB (Nolan, Gravity, Taken, The Substance...). Add new offenders there.
+- Best Football Films `min_votes` is 500 (3000 left it at 19 titles once IMDb Sport/Documentary gating was required).
 - `gh run watch` can exit early; poll `gh run view <id> --json status` in an until-loop instead.
