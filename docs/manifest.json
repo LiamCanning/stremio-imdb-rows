@@ -1,6 +1,6 @@
 {
  "id": "org.liamcanning.imdbrows",
- "version": "1.0.20261106",
+ "version": "1.0.20261107",
  "name": "IMDb Rows",
  "description": "Curated rows sorted by IMDb rating, rebuilt weekly.",
  "resources": [
@@ -524,7 +524,8 @@
       "Documentary",
       "Drama",
       "History",
-      "Romance"
+      "Romance",
+      "War"
      ],
      "isRequired": true
     },
@@ -556,8 +557,7 @@
       "Romance",
       "Science Fiction",
       "Thriller",
-      "War",
-      "Western"
+      "War"
      ],
      "isRequired": true
     },
@@ -1163,7 +1163,8 @@
       "History",
       "News",
       "Reality",
-      "Romance"
+      "Romance",
+      "War"
      ],
      "isRequired": true
     },
