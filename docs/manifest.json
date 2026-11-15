@@ -1,6 +1,6 @@
 {
  "id": "org.liamcanning.imdbrows",
- "version": "1.0.20261114",
+ "version": "1.0.20261115",
  "name": "IMDb Rows",
  "description": "Curated rows sorted by IMDb rating, rebuilt weekly.",
  "resources": [
@@ -414,6 +414,7 @@
       "Drama",
       "Family",
       "Fantasy",
+      "Mystery",
       "Romance",
       "Science Fiction",
       "War"
